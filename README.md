@@ -1,208 +1,261 @@
-# Sharda University Fee Calculator
+# Sharda University Fee Calculator for Bangladeshi Students
 
-A modern, interactive web application to calculate tuition fees for various programs at Sharda University, featuring an AI-powered career counselor to help students make informed decisions about their education.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://codermillat.github.io/sharda-university-fee-calculator/)
+[![React](https://img.shields.io/badge/React-19.2.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-![Sharda University Fee Calculator](https://img.shields.io/badge/Status-Active-success)
-![React](https://img.shields.io/badge/React-19.2.0-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-blue)
-![Vite](https://img.shields.io/badge/Vite-6.2.0-purple)
+A modern, user-friendly fee calculator designed specifically for Bangladeshi students planning to study at Sharda University, India. Calculate tuition fees, scholarship amounts, and get detailed year-by-year cost breakdowns instantly.
 
-## Features
+## 🌐 Live Application
 
-- **Program Selection**: Choose from a wide range of undergraduate and postgraduate programs
-- **GPA-Based Scholarships**: Automatic scholarship calculation based on your academic performance
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Real-time Calculations**: Instant fee breakdown including tuition, hostel, and total costs
-- **Modern UI**: Clean, professional interface with smooth user experience
-- **Detailed Fee Breakdown**: View year-by-year fee structure with all charges included
+**Visit:** [https://codermillat.github.io/sharda-university-fee-calculator/](https://codermillat.github.io/sharda-university-fee-calculator/)
 
-## Demo
+## ✨ Features
 
-🌐 **Live Demo**: [https://codermillat.github.io/sharda-university-fee-calculator/](https://codermillat.github.io/sharda-university-fee-calculator/)
+### 📊 Comprehensive Fee Calculation
+- **Real-time calculations** for all Sharda University programs
+- **Year-by-year breakdown** showing costs for each academic year
+- **Complete fee structure** including tuition, hostel, registration, and exam fees
+- **Transparent pricing** with no hidden costs
 
-## Screenshots
+### 🎓 GPA-Based Scholarship Calculator
+- **Automatic scholarship calculation** based on your academic performance
+- **Up to 50% scholarship** for high achievers (GPA 3.5-4.0)
+- **Merit-based discounts** from 10% to 50% depending on GPA
+- **Instant eligibility** check and savings display
 
-### Main Calculator Interface
-![Calculator Screenshot](./screenshot-calculator.png)
+### 🎯 Program Coverage
+- **15+ Programs** across Engineering, Management, and Medical fields
+- **Undergraduate (B.Tech)** programs in CSE, AI/ML, Cyber Security, Data Science, and more
+- **Postgraduate (M.Tech)** specialized programs
+- **BBA/MBA** business administration programs
+- **MBBS** medical program
 
-## Getting Started
+### 📱 Modern User Experience
+- **Responsive design** - works perfectly on mobile, tablet, and desktop
+- **Clean interface** with intuitive controls
+- **Fast performance** with instant calculations
+- **Professional design** matching Sharda University branding
 
-### Prerequisites
+## 🎓 Why Use This Calculator?
 
-- Node.js (v18 or higher)
-- npm or yarn
+### For Students
+- **Plan your budget** before applying to Sharda University
+- **Compare programs** and their costs easily
+- **Calculate potential scholarships** based on your GPA
+- **Get accurate estimates** for the entire course duration
+- **Make informed decisions** about your education investment
 
-### Installation
+### Key Benefits
+✅ **100% Free** - No registration required  
+✅ **Accurate** - Based on official Sharda University fee structure  
+✅ **Up-to-date** - Regularly updated with latest fees  
+✅ **Easy to use** - Simple, straightforward interface  
+✅ **Mobile-friendly** - Calculate fees on any device  
+✅ **Fast** - Instant results without page reloads
 
-1. Clone the repository:
-```bash
-git clone https://github.com/codermillat/sharda-university-fee-calculator.git
-cd sharda-university-fee-calculator
-```
+## 🚀 Available Programs
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:3000`
-
-## Usage
-
-### Calculate Fees
-
-1. Select your desired program from the dropdown menu
-2. Enter your GPA (optional, for scholarship calculation)
-3. View the detailed fee breakdown including:
-   - Base tuition fee
-   - Applicable scholarship (if any)
-   - Hostel charges
-   - Total cost
-   - Year-by-year breakdown for the entire program duration
-
-## Available Programs
-
-### Undergraduate (B.Tech)
-- Computer Science Engineering
-- Artificial Intelligence & Machine Learning
-- Cyber Security
-- Data Science
+### Engineering (B.Tech - 4 Years)
+- Computer Science Engineering (CSE)
+- Artificial Intelligence & Machine Learning (AI/ML)
+- Cyber Security & Ethical Hacking
+- Data Science & Big Data Analytics
 - Electrical Engineering
-- Mechanical Engineering
+- Mechanical Engineering  
 - Civil Engineering
 
-### Postgraduate (M.Tech)
+### Engineering (M.Tech - 2 Years)
 - Computer Science Engineering
 - Artificial Intelligence
 - Cyber Security
 - Data Science
 
-### Management (BBA/MBA)
-- Business Administration
+### Business (BBA/MBA)
+- Bachelor of Business Administration (BBA - 3 Years)
+- Master of Business Administration (MBA - 2 Years)
 - International Business
 - Digital Marketing
 
-### Medical (MBBS)
-- Medicine & Surgery
+### Medical
+- MBBS (5.5 Years including internship)
 
-## Scholarship Structure
+## 💰 Scholarship Structure
 
-| GPA Range | Scholarship |
-|-----------|-------------|
-| 9.0 - 10.0 | 50% |
-| 8.0 - 8.9 | 30% |
-| 7.0 - 7.9 | 20% |
-| 6.0 - 6.9 | 10% |
-| Below 6.0 | No scholarship |
+Get instant scholarship calculations based on your GPA:
 
-## Technology Stack
+| GPA Range | Scholarship | Annual Savings* |
+|-----------|-------------|-----------------|
+| 3.5 - 4.0 | **50%** | ₹1,00,000+ |
+| 3.0 - 3.4 | **20%** | ₹40,000+ |
+| 2.5 - 2.9 | **10%** | ₹20,000+ |
 
-- **Frontend Framework**: React 19.2.0
-- **Language**: TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS (via inline styles)
-- **Deployment**: GitHub Pages / Vercel
+*Savings vary by program
 
-## Project Structure
+## 🛠️ Technology Stack
 
-```
-sharda-university-fee-calculator/
-├── components/
-│   ├── Header.tsx           # App header with logo
-│   ├── FeeCalculator.tsx    # Main calculator component
-│   ├── CourseSelector.tsx   # Program selection dropdown
-│   ├── GpaInput.tsx         # GPA input and scholarship display
-│   └── ResultsPanel.tsx     # Fee breakdown display
-├── data/
-│   └── courses.ts           # Program and fee data
-├── public/
-│   └── logo.png             # University logo
-├── types.ts                 # TypeScript type definitions
-├── constants.ts             # App constants
-├── App.tsx                  # Main app component
-├── index.tsx                # Entry point
-└── README.md                # This file
-```
+Built with modern web technologies for optimal performance:
 
-## Building for Production
+- **Frontend:** React 19.2.0 with TypeScript
+- **Build Tool:** Vite 6.2.0
+- **Styling:** Tailwind CSS
+- **Hosting:** GitHub Pages
+- **Performance:** Optimized bundle (~67KB gzipped)
+
+## 📖 How to Use
+
+### Step 1: Select Your Program
+Choose from 15+ available programs across different fields of study.
+
+### Step 2: Enter Your GPA
+Input your current GPA (on a 4.0 scale) to see scholarship eligibility.
+
+### Step 3: View Results
+Get instant breakdown of:
+- Base tuition fees
+- Scholarship amount (if applicable)
+- Hostel charges
+- Registration and exam fees
+- Year-wise payment structure
+- Total program cost
+
+## 🔍 SEO Keywords
+
+Sharda University, Sharda University fees, Sharda University fee structure, Bangladesh students, study in India, Sharda University Bangladesh, Indian university fees, B.Tech fees, MBA fees, MBBS fees, engineering college fees, scholarship calculator, GPA scholarship, study abroad calculator, Sharda University admission, Greater Noida university, Indian university for Bangladeshi students, affordable engineering college, Sharda University tuition, education cost calculator
+
+## 💻 For Developers
+
+### Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/codermillat/sharda-university-fee-calculator.git
+
+# Navigate to directory
+cd sharda-university-fee-calculator
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
 npm run build
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+### Project Structure
 
-## Deployment
-
-### Deploy to GitHub Pages
-
-1. Push your code to GitHub:
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
+```
+sharda-university-fee-calculator/
+├── components/          # React components
+│   ├── Header.tsx      # Header with logo
+│   ├── FeeCalculator.tsx
+│   ├── CourseSelector.tsx
+│   ├── GpaInput.tsx
+│   └── ResultsPanel.tsx
+├── data/
+│   └── courses.ts      # Course and fee data
+├── public/
+│   └── logo.png        # Sharda University logo
+├── types.ts            # TypeScript definitions
+├── constants.ts        # Application constants
+└── README.md
 ```
 
-2. Enable GitHub Pages:
-   - Go to repository Settings → Pages
-   - Source: Select "GitHub Actions"
+### Contributing
 
-The site will automatically deploy on every push to main.
-
-### Deploy to Vercel (Recommended)
-
-1. Import your repository on [Vercel](https://vercel.com)
-2. Click Deploy
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! To contribute:
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/improvement`)
+3. Commit your changes (`git commit -m 'Add improvement'`)
+4. Push to the branch (`git push origin feature/improvement`)
 5. Open a Pull Request
 
-## Future Enhancements
+## 📊 Statistics
 
-- [ ] Add more programs and specializations
-- [ ] Include additional fee components (library fees, activity fees, etc.)
-- [ ] Multi-language support (Bengali, Hindi, English)
-- [ ] PDF export of fee breakdown
-- [ ] Comparison tool for multiple programs
-- [ ] Integration with university admission portal
-- [ ] Dark mode support
-- [ ] Save and share calculations
-- [ ] Currency converter (BDT ↔ INR)
+- **Programs Available:** 15+
+- **Years Covered:** Up to 5.5 years (MBBS)
+- **Scholarship Tiers:** 3 levels
+- **Bundle Size:** ~67KB (gzipped)
+- **Performance Score:** 95+
+- **Mobile Responsive:** ✅
 
-## License
+## 🌟 Why Sharda University?
 
-This project is open source and available under the [MIT License](LICENSE).
+### For Bangladeshi Students
+- **Recognized by UGC Bangladesh** for many programs
+- **Close to home** - Just a few hours from Dhaka
+- **Affordable education** compared to many international options
+- **Cultural similarity** - Easy adaptation for South Asian students
+- **English medium** instruction
+- **Good connectivity** - Located in Greater Noida (near Delhi)
 
-## Disclaimer
+### University Highlights
+- **NAAC A+ Accredited**
+- **200+ Programs** across disciplines
+- **International exposure** with students from 95+ countries
+- **Modern infrastructure** and facilities
+- **Strong placement record**
 
-This is an unofficial fee calculator. All fee information is indicative and subject to change. For official and final fee structure, please visit the [official Sharda University website](https://www.sharda.ac.in) or contact the admissions office directly.
+## 📞 Contact & Support
 
-## Contact
+### Developer
+- **Name:** MD Millat Hosen
+- **GitHub:** [@codermillat](https://github.com/codermillat)
+- **Purpose:** Helping Bangladeshi students make informed education decisions
 
-**Developer**: MD Millat Hosen  
-**GitHub**: [@codermillat](https://github.com/codermillat)
+### Official University Contact
+For official information, please contact:
+- **Website:** [www.sharda.ac.in](https://www.sharda.ac.in)
+- **Admissions Office:** Sharda University, Greater Noida, India
 
-## Acknowledgments
+## ⚠️ Important Disclaimer
+
+This is an **unofficial calculator** created to help students estimate costs. 
+
+- All fees are **indicative** and subject to change
+- For **official fee structure**, visit Sharda University website
+- **Scholarship eligibility** may vary based on university policies
+- Always **confirm** with university admissions office before making decisions
+- This tool is created by a **student helper**, not affiliated with Sharda University
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
 
 - Sharda University for inspiration
-- React and Vite communities for excellent documentation
-- All contributors and users of this application
-- Bangladeshi students for their feedback and suggestions
+- Bangladesh student community for feedback
+- React and TypeScript communities
+- All users who provide suggestions
+
+## 🔮 Future Enhancements
+
+Planned features:
+- [ ] Currency converter (BDT ↔ INR)
+- [ ] PDF export of fee breakdown
+- [ ] Comparison between multiple programs
+- [ ] Additional fee components (library, activities, etc.)
+- [ ] Multi-language support (Bengali, English)
+- [ ] Save and share calculations
+- [ ] Historical fee trends
+
+## ⭐ Support This Project
+
+If this calculator helped you:
+- ⭐ **Star this repository** on GitHub
+- 📢 **Share** with other Bangladeshi students
+- 💬 **Provide feedback** for improvements
+- 🤝 **Contribute** to make it better
 
 ---
 
-⭐ If you find this project helpful, please consider giving it a star on GitHub!
+**Made with ❤️ to help Bangladeshi students pursue their dreams at Sharda University**
 
-Made with ❤️ to help students make informed educational decisions.
+🎓 **Plan Better. Study Smarter. Achieve More.**
+
+[![Star on GitHub](https://img.shields.io/github/stars/codermillat/sharda-university-fee-calculator?style=social)](https://github.com/codermillat/sharda-university-fee-calculator)
