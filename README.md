@@ -28,7 +28,7 @@ After calculating your fees, apply directly to Sharda University:
 ### 🎓 GPA-Based Scholarship Calculator
 - **Automatic scholarship calculation** based on your academic performance
 - **Up to 50% scholarship** for high achievers (GPA 3.5-4.0)
-- **Merit-based discounts** from 10% to 50% depending on GPA
+- **Merit-based discounts** from 20% to 50% depending on GPA
 - **Instant eligibility** check and savings display
 
 ### 🎯 Program Coverage
@@ -95,7 +95,6 @@ Get instant scholarship calculations based on your GPA:
 |-----------|-------------|-----------------|
 | 3.5 - 4.0 | **50%** | ₹1,00,000+ |
 | 3.0 - 3.4 | **20%** | ₹40,000+ |
-| 2.5 - 2.9 | **10%** | ₹20,000+ |
 
 *Savings vary by program
 
