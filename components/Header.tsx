@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../public/logo.png';
 
 const Header: React.FC = () => {
   return (
@@ -6,7 +7,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between">
         <div className="flex items-center mb-2 sm:mb-0">
           <img 
-            src={`${import.meta.env.BASE_URL}logo.png`}
+            src={logo}
             alt="Sharda University Logo" 
             className="h-14 mr-4"
           />
