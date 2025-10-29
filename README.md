@@ -11,6 +11,12 @@ A modern, user-friendly fee calculator designed specifically for Bangladeshi stu
 
 **Visit:** [https://codermillat.github.io/sharda-university-fee-calculator/](https://codermillat.github.io/sharda-university-fee-calculator/)
 
+## 🎓 Ready to Apply?
+
+After calculating your fees, apply directly to Sharda University:
+
+**👉 [Apply Now - bit.ly/studyatsharda_youtube](https://bit.ly/studyatsharda_youtube)**
+
 ## ✨ Features
 
 ### 📊 Comprehensive Fee Calculation
@@ -210,6 +216,7 @@ Contributions are welcome! To contribute:
 ### Official University Contact
 For official information, please contact:
 - **Website:** [www.sharda.ac.in](https://www.sharda.ac.in)
+- **Direct Application:** [bit.ly/studyatsharda_youtube](https://bit.ly/studyatsharda_youtube)
 - **Admissions Office:** Sharda University, Greater Noida, India
 
 ## ⚠️ Important Disclaimer
