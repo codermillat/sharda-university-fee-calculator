@@ -28,14 +28,7 @@ This project is configured to automatically deploy to GitHub Pages when you push
    - Click on "Pages" in the left sidebar
    - Under "Source", select "GitHub Actions"
 
-4. **Add Your Gemini API Key**
-   - In your repository, go to "Settings" > "Secrets and variables" > "Actions"
-   - Click "New repository secret"
-   - Name: `GEMINI_API_KEY`
-   - Value: Your actual Gemini API key
-   - Click "Add secret"
-
-5. **Deploy**
+4. **Deploy**
    - The GitHub Action will automatically run on your next push
    - Your site will be available at: `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`
 
@@ -57,8 +50,7 @@ Vercel is even easier for React apps:
 2. Sign in with GitHub
 3. Click "New Project"
 4. Import your repository
-5. Add environment variable: `GEMINI_API_KEY`
-6. Click "Deploy"
+5. Click "Deploy"
 
 That's it! Vercel will automatically deploy on every push.
 
@@ -71,13 +63,7 @@ npm run dev
 
 Open http://localhost:3000 to view the app.
 
-## Environment Variables
+## Local Development
 
-Create a `.env` file in the root directory:
-
-```
-GEMINI_API_KEY=your_api_key_here
-```
-
-**Note:** Never commit your `.env` file to GitHub!
+No environment variables are required for this project.
 

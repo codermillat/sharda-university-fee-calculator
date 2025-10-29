@@ -12,15 +12,7 @@ Your GitHub Actions workflow failed because **GitHub Pages is not enabled yet** 
 3. Select **"GitHub Actions"** from the dropdown
 4. That's it! (No need to click save, it auto-saves)
 
-### Step 2: Add Your API Key
-
-1. Go to: https://github.com/codermillat/sharda-university-fee-calculator/settings/secrets/actions
-2. Click **"New repository secret"**
-3. Name: `GEMINI_API_KEY`
-4. Value: Your Gemini API key
-5. Click **"Add secret"**
-
-### Step 3: Push the Fixed Workflow
+### Step 2: Push the Fixed Workflow
 
 I've already committed the fixes locally. Just push them:
 
@@ -28,7 +20,7 @@ I've already committed the fixes locally. Just push them:
 git push origin main
 ```
 
-### Step 4: Re-run the Workflow
+### Step 3: Re-run the Workflow
 
 1. Go to: https://github.com/codermillat/sharda-university-fee-calculator/actions
 2. Click on the failed workflow
@@ -47,8 +39,7 @@ Honestly, Vercel is much easier for React apps:
 2. Sign in with GitHub
 3. Click "New Project"
 4. Select `codermillat/sharda-university-fee-calculator`
-5. Add environment variable: `GEMINI_API_KEY` = your key
-6. Click Deploy
+5. Click Deploy
 
 Done in 2 minutes! Plus you get:
 - Faster deployments

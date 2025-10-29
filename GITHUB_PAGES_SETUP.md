@@ -14,15 +14,7 @@ You're seeing the deployment error because GitHub Pages needs to be enabled firs
 
 That's it! This enables GitHub Pages for your repository.
 
-### Step 2: Add Your Gemini API Key (Important!)
-
-1. Still in Settings, click on **Secrets and variables** → **Actions** in the left sidebar
-2. Click the green **New repository secret** button
-3. Name: `GEMINI_API_KEY`
-4. Value: Paste your actual Gemini API key
-5. Click **Add secret**
-
-### Step 3: Re-run the Failed Workflow
+### Step 2: Re-run the Failed Workflow
 
 1. Go to the **Actions** tab in your repository
 2. Click on the failed workflow run
@@ -30,7 +22,7 @@ That's it! This enables GitHub Pages for your repository.
 
 The deployment should succeed this time!
 
-### Step 4: Access Your Live Site
+### Step 3: Access Your Live Site
 
 Once the deployment succeeds (green checkmark), your site will be live at:
 
@@ -44,14 +36,13 @@ If you still see errors after enabling Pages:
 
 1. **Wait 2-3 minutes** after enabling Pages, then re-run the workflow
 2. Check that you selected **GitHub Actions** (not "Deploy from a branch")
-3. Verify your API key is added correctly in Secrets
 
 ### Build Fails?
 
 If the build step fails:
 - Check that your `package.json` has all dependencies
-- Make sure the GEMINI_API_KEY secret is set correctly
 - Look at the build logs for specific error messages
+- Make sure you ran `npm install` locally first
 
 ### Want to Deploy Manually?
 
@@ -73,10 +64,7 @@ Vercel is actually simpler and recommended for React apps:
 2. Sign in with your GitHub account
 3. Click **New Project**
 4. Import your repository: `codermillat/sharda-university-fee-calculator`
-5. Add environment variable:
-   - Name: `GEMINI_API_KEY`
-   - Value: Your API key
-6. Click **Deploy**
+5. Click **Deploy**
 
 Done! Vercel will give you a URL like: `sharda-university-fee-calculator.vercel.app`
 
