@@ -1,6 +1,7 @@
 # Sharda University Fee Calculator for Bangladeshi Students
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://codermillat.github.io/sharda-university-fee-calculator/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://sharda-university-fee-calculator.vercel.app/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://sharda-university-fee-calculator.vercel.app/)
 [![React](https://img.shields.io/badge/React-19.2.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
@@ -9,7 +10,7 @@ A modern, user-friendly fee calculator designed specifically for Bangladeshi stu
 
 ## 🌐 Live Application
 
-**Visit:** [https://codermillat.github.io/sharda-university-fee-calculator/](https://codermillat.github.io/sharda-university-fee-calculator/)
+**Visit:** [https://sharda-university-fee-calculator.vercel.app/](https://sharda-university-fee-calculator.vercel.app/)
 
 ## 🎓 Ready to Apply?
 
@@ -104,9 +105,10 @@ Built with modern web technologies for optimal performance:
 
 - **Frontend:** React 19.2.0 with TypeScript
 - **Build Tool:** Vite 6.2.0
-- **Styling:** Tailwind CSS
-- **Hosting:** GitHub Pages
+- **Styling:** Tailwind CSS (CDN)
+- **Hosting:** Vercel
 - **Performance:** Optimized bundle (~67KB gzipped)
+- **Auto-Deploy:** Automatic deployment on every push to main
 
 ## 📖 How to Use
 
@@ -166,8 +168,45 @@ sharda-university-fee-calculator/
 │   └── logo.png        # Sharda University logo
 ├── types.ts            # TypeScript definitions
 ├── constants.ts        # Application constants
+├── vercel.json          # Vercel configuration
 └── README.md
 ```
+
+## 🚀 Deployment
+
+### Deployed on Vercel
+
+This project is live on Vercel with automatic deployments:
+
+**Live URL:** [https://sharda-university-fee-calculator.vercel.app/](https://sharda-university-fee-calculator.vercel.app/)
+
+#### Benefits of Vercel:
+- ✅ **Automatic deployments** on every push to main
+- ✅ **Preview deployments** for pull requests  
+- ✅ **Global CDN** with edge caching
+- ✅ **Automatic HTTPS** with SSL certificates
+- ✅ **Zero configuration** - works out of the box
+- ✅ **Fast builds** - typically under 1 minute
+
+### Deploy Your Own Copy
+
+Want to deploy your own version? Follow these steps:
+
+1. **Fork the Repository**
+   - Go to [github.com/codermillat/sharda-university-fee-calculator](https://github.com/codermillat/sharda-university-fee-calculator)
+   - Click "Fork" button
+
+2. **Deploy to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Sign in with GitHub
+   - Click "New Project"
+   - Import your forked repository
+   - Click "Deploy" (no configuration needed!)
+
+3. **Done!**
+   - Vercel will build and deploy your site
+   - You'll get a live URL like: `your-project.vercel.app`
+   - Every push to main automatically redeploys
 
 ### Contributing
 
