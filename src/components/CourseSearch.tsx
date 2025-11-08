@@ -112,11 +112,11 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
   });
 
   return (
-    <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8">
+    <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
         {/* School Selector */}
         <div>
-          <label htmlFor="school-select" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2">
+          <label htmlFor="school-select" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2 text-center md:text-left">
             Select School
           </label>
           <select
@@ -141,7 +141,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
 
         {/* Course Search with Clear Button */}
         <div>
-          <label htmlFor="course-search" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2">
+          <label htmlFor="course-search" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2 text-center md:text-left">
             Search Course
           </label>
           <div className="relative">
@@ -177,7 +177,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
         </div>
       </div>
 
-      {/* Course Dropdown List */}
+      {/* Course Dropdown List - Centered */}
       {isOpen && hasCourses && (
         <div className="relative z-10 w-full mt-2 bg-white border border-slate-300 rounded-lg shadow-xl max-h-80 sm:max-h-96 overflow-y-auto">
           {Object.entries(filteredCourses).map(([school, courses]) => (
