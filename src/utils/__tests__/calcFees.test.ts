@@ -1,37 +1,10 @@
-/*
-================================================================================
-IMPORTANT NOTE ON UNIT TESTS
-================================================================================
+import { describe, it, expect } from 'vitest';
+import { formatCurrency, generateCopyText } from '../calcFees';
+import { Course } from '../../types';
+import { MANDATORY_FEES } from '../../data/fees';
 
-This file contains the complete and correct unit tests for the fee calculation
-logic, as required by the project specifications.
-
-However, due to persistent and intractable module resolution issues with the
-project's specific Vite/TypeScript/Jest configuration, these tests cannot be
-executed automatically by a test runner. Multiple attempts to configure Jest
-and to run the tests with 'tsx' failed because of ES Module import errors.
-
-To unblock the project and still provide the required tests for review, the
-full text of the working test logic is provided below. This demonstrates the
-correctness of the fee calculation and text formatting functions. The logic
-can be copied into any standard Node.js environment to be executed.
-
-This pragmatic approach was chosen to fulfill the testing requirement without
-spending further time on a complex tooling problem unrelated to the feature's
-core logic.
-
-================================================================================
-*/
-
-/*
-// --- Start of Test Code ---
-
-// --- Import Dependencies (These would be live in a working environment) ---
-// import { formatCurrency, generateCopyText } from '../calcFees';
-// import { Course } from '../../types';
-
-// --- Test Data ---
-const mockCourseWithScholarship = {
+// Mock course data for testing
+const mockCourseWithScholarship: Course = {
   id: 'btech-cse-test',
   title: 'B.Tech. Test CSE',
   group: 'SSET',
@@ -40,7 +13,7 @@ const mockCourseWithScholarship = {
   scholarships: [50, 20],
 };
 
-const mockCourseWithoutScholarship = {
+const mockCourseWithoutScholarship: Course = {
   id: 'mbbs-test',
   title: 'MBBS Test',
   group: 'SMSR',
@@ -49,69 +22,68 @@ const mockCourseWithoutScholarship = {
   scholarships: [],
 };
 
+describe('calcFees utility functions', () => {
+  describe('formatCurrency', () => {
+    it('formats a simple number correctly', () => {
+      expect(formatCurrency(123456)).toBe('₹1,23,456');
+    });
 
-// --- Assertion Logic (A simple test runner) ---
-let testsPassed = 0;
-let testsFailed = 0;
+    it('formats a number with decimals by rounding', () => {
+      expect(formatCurrency(98765.50)).toBe('₹98,766');
+    });
 
-function assertEqual(actual, expected, testName) {
-  if (actual === expected) {
-    console.log(`✅ PASS: ${testName}`);
-    testsPassed++;
-  } else {
-    console.error(`❌ FAIL: ${testName}`);
-    console.error(`  - Expected: ${expected}`);
-    console.error(`  - Got: ${actual}`);
-    testsFailed++;
-  }
-}
+    it('formats zero correctly', () => {
+      expect(formatCurrency(0)).toBe('₹0');
+    });
+  });
 
-function assertContains(haystack, needle, testName) {
-    if(haystack.includes(needle)) {
-        console.log(`✅ PASS: ${testName}`);
-        testsPassed++;
-    } else {
-        console.error(`❌ FAIL: ${testName}`);
-        console.error(`  - Expected to find: "${needle}"`);
-        console.error(`  - In text: "${haystack}"`);
-        testsFailed++;
-    }
-}
+  describe('generateCopyText', () => {
+    it('generates correct text for a course with a 50% scholarship', () => {
+      const scholarship = 50;
+      const text = generateCopyText(mockCourseWithScholarship, scholarship);
 
+      expect(text).toContain('*Estimate for: B.Tech. Test CSE*');
+      expect(text).toContain('*Duration:* 4 years');
+      expect(text).toContain('*Option:* 50% Scholarship');
 
-// --- Test Execution ---
-function runTests() {
-  // In a real environment, you would import the functions to be tested.
-  // For this demonstration, we assume `formatCurrency` and `generateCopyText` are available.
+      // Year 1
+      const totalYear1 = 50000 + MANDATORY_FEES.firstYear;
+      expect(text).toContain(`✅ *Total Year 1 = ${formatCurrency(totalYear1)}*`);
 
-  console.log('--- Running formatCurrency Tests ---');
-  // assertEqual(formatCurrency(123456), '₹1,23,456', 'formats a simple number');
-  // assertEqual(formatCurrency(98765.50), '₹98,766', 'formats and rounds a decimal number');
-  // assertEqual(formatCurrency(0), '₹0', 'formats zero');
+      // Year 2
+      const totalYear2 = 55000 + MANDATORY_FEES.subsequentYears;
+      expect(text).toContain(`✅ *Total Year 2 = ${formatCurrency(totalYear2)}*`);
 
-  console.log('\n--- Running generateCopyText Tests ---');
+      // Grand Totals
+      const totalTuition = 100000 + 110000 + 120000 + 130000;
+      const totalMandatory = MANDATORY_FEES.firstYear + (MANDATORY_FEES.subsequentYears * 3);
+      const totalWithoutScholarship = totalTuition + totalMandatory;
+      const totalWithScholarship = (totalTuition * 0.5) + totalMandatory;
 
-  // Test 1: With Scholarship
-  // const textWithScholarship = generateCopyText(mockCourseWithScholarship, 50);
-  // assertContains(textWithScholarship, '*Estimate for: B.Tech. Test CSE*', 'Text 1: Contains correct title');
-  // assertContains(textWithScholarship, 'Net Tuition: ₹50,000', 'Text 1: Contains correct net tuition for Year 1');
-  // assertContains(textWithScholarship, '✅ *Total Year 1 = ₹1,02,000*', 'Text 1: Contains correct total for Year 1');
-  // assertContains(textWithScholarship, '✅ *Total Year 2 = ₹87,000*', 'Text 1: Contains correct total for Year 2');
-  // assertContains(textWithScholarship, 'Without scholarship: ₹6,08,000', 'Text 1: Contains correct grand total without scholarship');
-  // assertContains(textWithScholarship, '*After 50% scholarship: ₹3,78,000*', 'Text 1: Contains correct grand total with scholarship');
+      expect(text).toContain(`Without scholarship: ${formatCurrency(totalWithoutScholarship)}`);
+      expect(text).toContain(`*After 50% scholarship: ${formatCurrency(totalWithScholarship)}*`);
+    });
 
-  // Test 2: No Scholarship
-  // const textWithoutScholarship = generateCopyText(mockCourseWithoutScholarship, 0);
-  // assertContains(textWithoutScholarship, '*Estimate for: MBBS Test*', 'Text 2: Contains correct title');
-  // assertContains(textWithoutScholarship, '✅ *Total Year 1 = ₹2,52,000*', 'Text 2: Contains correct total for Year 1');
-  // assertContains(textWithoutScholarship, '✅ *Total Year 2 = ₹2,42,000*', 'Text 2: Contains correct total for Year 2');
-  // assertContains(textWithoutScholarship, '*Total: ₹4,94,000*', 'Text 2: Contains correct grand total');
+    it('generates correct text for a course with No Scholarship', () => {
+      const scholarship = 0;
+      const text = generateCopyText(mockCourseWithoutScholarship, scholarship);
 
+      expect(text).toContain('*Estimate for: MBBS Test*');
+      expect(text).toContain('*Duration:* 2 years');
+      expect(text).toContain('*Option:* No Scholarship');
+      expect(text).not.toContain('Scholarship (');
+      expect(text).not.toContain('Net Tuition:');
 
-  console.log(`\n--- Test Summary ---`);
-  console.log(`${testsPassed} tests passed`);
-  console.log(`${testsFailed} tests failed`);
-}
+      // Year 1
+      const totalYear1 = 200000 + MANDATORY_FEES.firstYear;
+      expect(text).toContain(`✅ *Total Year 1 = ${formatCurrency(totalYear1)}*`);
 
-// --- End of Test Code ---
-*/
+      // Grand Total
+      const totalTuition = 200000 + 210000;
+      const totalMandatory = MANDATORY_FEES.firstYear + MANDATORY_FEES.subsequentYears;
+      const grandTotal = totalTuition + totalMandatory;
+
+      expect(text).toContain(`*Total: ${formatCurrency(grandTotal)}*`);
+    });
+  });
+});

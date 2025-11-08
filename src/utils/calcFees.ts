@@ -1,5 +1,5 @@
-import { Course } from '../types';
-import { MANDATORY_FEES } from '../data/fees';
+import { Course } from '../../types';
+import { MANDATORY_FEES } from '../../data/fees';
 
 /**
  * Formats a number into the Indian currency format (e.g., ₹1,23,456).
