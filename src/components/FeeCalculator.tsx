@@ -41,26 +41,36 @@ const FeeCalculator: React.FC = () => {
 
   return (
     <div>
-      {/* SEO-friendly hidden content for search engines */}
-      <div className="sr-only">
-        <h2>Sharda University Fee Calculator for Bangladeshi Students</h2>
-        <p>
+      {/* SEO-friendly visible content for search engines */}
+      <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+        <h2 className="text-xl font-bold text-slate-800 mb-2">Sharda University Fee Calculator for Bangladeshi Students</h2>
+        <p className="text-sm text-slate-700 mb-3">
           Calculate Sharda University fees for B.Tech Computer Science Engineering (CSE), MBBS, B.Sc Nursing, BBA, MBA, and other courses. 
           Get detailed year-wise fee breakdown with scholarship calculator. Check admission process, course fees, and scholarship eligibility 
           for study in India from Bangladesh. Explore career options after B.Tech CSE, B.Sc Computer Science future scope, and high paying jobs 
           after computer science engineering. Find best college in Greater Noida for B.Tech, Sharda University admission process 2025, 
           and scholarship information for international students.
         </p>
-        <h3>Key Features:</h3>
-        <ul>
-          <li>B.Tech CSE Fee Calculator with Scholarship Options</li>
-          <li>MBBS Fee Structure for Bangladeshi Students</li>
-          <li>B.Sc Nursing Fees and Admission Process</li>
-          <li>BBA and MBA Course Fees</li>
-          <li>Scholarship Calculator based on GPA</li>
-          <li>Career Guidance for Computer Science Students</li>
-          <li>Study Abroad Information for Bangladeshi Students</li>
-        </ul>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          <div>
+            <h3 className="font-semibold text-slate-800 mb-1">Key Features:</h3>
+            <ul className="list-disc list-inside text-slate-600 space-y-1">
+              <li>B.Tech CSE Fee Calculator with Scholarship Options</li>
+              <li>MBBS Fee Structure for Bangladeshi Students</li>
+              <li>B.Sc Nursing Fees and Admission Process</li>
+              <li>BBA and MBA Course Fees</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-slate-800 mb-1">Additional Services:</h3>
+            <ul className="list-disc list-inside text-slate-600 space-y-1">
+              <li>Scholarship Calculator based on GPA</li>
+              <li>Career Guidance for Computer Science Students</li>
+              <li>Study Abroad Information for Bangladeshi Students</li>
+              <li>Year-wise Fee Breakdown</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <CourseSearch 

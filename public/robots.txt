@@ -67,6 +67,6 @@ Allow: /
 User-agent: *
 Crawl-delay: 1
 
-# Sitemap location (if you create one in the future)
-# Sitemap: https://sharda-university-fee-calculator.vercel.app/sitemap.xml
+# Sitemap location
+Sitemap: https://sharda-university-fee-calculator.vercel.app/sitemap.xml
 
