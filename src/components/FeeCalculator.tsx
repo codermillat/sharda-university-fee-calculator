@@ -41,6 +41,28 @@ const FeeCalculator: React.FC = () => {
 
   return (
     <div>
+      {/* SEO-friendly hidden content for search engines */}
+      <div className="sr-only">
+        <h2>Sharda University Fee Calculator for Bangladeshi Students</h2>
+        <p>
+          Calculate Sharda University fees for B.Tech Computer Science Engineering (CSE), MBBS, B.Sc Nursing, BBA, MBA, and other courses. 
+          Get detailed year-wise fee breakdown with scholarship calculator. Check admission process, course fees, and scholarship eligibility 
+          for study in India from Bangladesh. Explore career options after B.Tech CSE, B.Sc Computer Science future scope, and high paying jobs 
+          after computer science engineering. Find best college in Greater Noida for B.Tech, Sharda University admission process 2025, 
+          and scholarship information for international students.
+        </p>
+        <h3>Key Features:</h3>
+        <ul>
+          <li>B.Tech CSE Fee Calculator with Scholarship Options</li>
+          <li>MBBS Fee Structure for Bangladeshi Students</li>
+          <li>B.Sc Nursing Fees and Admission Process</li>
+          <li>BBA and MBA Course Fees</li>
+          <li>Scholarship Calculator based on GPA</li>
+          <li>Career Guidance for Computer Science Students</li>
+          <li>Study Abroad Information for Bangladeshi Students</li>
+        </ul>
+      </div>
+
       <CourseSearch 
         onCourseSelect={handleCourseSelect} 
         selectedCourse={selectedCourse}
@@ -66,13 +88,49 @@ const FeeCalculator: React.FC = () => {
               />
             ))}
           </div>
+
+          {/* Additional SEO Content */}
+          <div className="mt-8 p-4 bg-slate-50 rounded-lg text-sm text-slate-600">
+            <p className="mb-2">
+              <strong>Need more information?</strong> For updated course details, admission process, and scholarship information, 
+              visit the{' '}
+              <a 
+                href="https://bangladesh.shardauniversity.org/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                official Sharda University Bangladesh portal
+              </a>
+              {' '}or connect with current students via{' '}
+              <a 
+                href="https://wa.me/918800996151" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-green-600 hover:underline"
+              >
+                WhatsApp
+              </a>
+              .
+            </p>
+            <p>
+              Explore career opportunities after B.Tech Computer Science, B.Sc Computer Science future scope, and learn about 
+              high-paying jobs in software development, data science, AI/ML, cyber security, and cloud computing.
+            </p>
+          </div>
         </div>
       )}
 
       {!selectedCourse && (
         <div className="text-center mt-8 sm:mt-12 md:mt-16 text-slate-500 px-4">
           <p className="text-2xl mb-2">🎓</p>
-          <p className="text-sm sm:text-base md:text-lg">Please select a course to see the detailed fee breakdown.</p>
+          <p className="text-sm sm:text-base md:text-lg mb-4">
+            Please select a course to see the detailed fee breakdown.
+          </p>
+          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto">
+            Calculate fees for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses at Sharda University. 
+            Get instant fee breakdown with scholarship options for study in India from Bangladesh.
+          </p>
         </div>
       )}
     </div>
