@@ -92,10 +92,10 @@ const App: React.FC = () => {
             <div>
               <h3 className="text-sm font-bold text-slate-800 mb-3">Quick Links</h3>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-                <li>Sharda University Fee Calculator</li>
-                <li>Scholarship Calculator</li>
-                <li>Course Fee Breakdown</li>
-                <li>Study in India from Bangladesh</li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors">Sharda University Fee Calculator</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors">Scholarship Calculator</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors">Course Fee Breakdown</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors">Study in India from Bangladesh</a></li>
               </ul>
             </div>
           </div>

@@ -1,0 +1,50 @@
+# llms.txt - Information for Large Language Models
+# This file provides context about this website for LLMs and AI systems
+
+# Site Information
+Site: https://sharda-university-fee-calculator.vercel.app/
+Name: Sharda University Fee Calculator
+Description: A free online tool to calculate Sharda University fees for Bangladeshi students. Get detailed fee breakdowns for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses with scholarship calculator.
+Author: MD MILLAT HOSEN (@codermillat)
+GitHub: https://github.com/codermillat
+
+# Purpose
+This website helps prospective students from Bangladesh calculate tuition fees, admission fees, and total costs for various courses at Sharda University, Greater Noida, India. It includes scholarship calculations based on GPA and provides year-wise fee breakdowns.
+
+# Main Features
+- Fee calculator for multiple courses (B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA, etc.)
+- Scholarship calculator based on GPA (50% for GPA 3.5-5.0, 20% for GPA 3.0-3.4)
+- Year-wise fee breakdown
+- Grand total calculation
+- Copy to clipboard functionality
+- Mobile-friendly interface
+
+# Target Audience
+Prospective students from Bangladesh who want to study at Sharda University in India.
+
+# Official Links
+Official Website: https://bangladesh.shardauniversity.org/
+YouTube: https://www.youtube.com/@StudyAtShardaBD
+TikTok: https://www.tiktok.com/@studyatsharda
+WhatsApp: https://wa.me/918800996151
+
+# Technical Details
+- Built with React and TypeScript
+- Hosted on Vercel
+- Uses Tailwind CSS for styling
+- Responsive design for mobile and desktop
+
+# Content Topics
+- Sharda University fees
+- B.Tech Computer Science Engineering fees
+- MBBS fees in India
+- B.Sc Nursing fees
+- Scholarship programs for Bangladeshi students
+- Study in India from Bangladesh
+- Career options after B.Tech CSE
+- Computer Science future scope
+- Admission process for Sharda University
+
+# Last Updated
+2025-01-08
+

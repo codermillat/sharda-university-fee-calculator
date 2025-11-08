@@ -43,7 +43,7 @@ const FeeCalculator: React.FC = () => {
     <div>
       {/* SEO-friendly visible content for search engines */}
       <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
-        <h2 className="text-xl font-bold text-slate-800 mb-2">Sharda University Fee Calculator for Bangladeshi Students</h2>
+        <h2 className="text-xl font-bold text-slate-800 mb-3">Sharda University Fee Calculator for Bangladeshi Students</h2>
         <p className="text-sm text-slate-700 mb-3">
           Calculate Sharda University fees for B.Tech Computer Science Engineering (CSE), MBBS, B.Sc Nursing, BBA, MBA, and other courses. 
           Get detailed year-wise fee breakdown with scholarship calculator. Check admission process, course fees, and scholarship eligibility 
@@ -51,25 +51,55 @@ const FeeCalculator: React.FC = () => {
           after computer science engineering. Find best college in Greater Noida for B.Tech, Sharda University admission process 2025, 
           and scholarship information for international students.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+        <p className="text-sm text-slate-700 mb-3">
+          Sharda University, located in Greater Noida, Uttar Pradesh, is one of the leading universities in India for international students, 
+          especially from Bangladesh. The university offers a wide range of undergraduate and postgraduate programs including B.Tech in Computer 
+          Science Engineering, MBBS, B.Sc Nursing, BBA, MBA, and many more. This fee calculator helps you estimate the total cost of education 
+          including tuition fees, admission fees, and other mandatory charges. You can also calculate potential scholarships based on your GPA 
+          and see how much you can save on your education costs.
+        </p>
+        <p className="text-sm text-slate-700 mb-3">
+          Understanding the fee structure is crucial for planning your education abroad. Our calculator provides detailed breakdowns for each 
+          year of your program, showing tuition fees, scholarship discounts, admission fees, and other charges. This helps you make informed 
+          decisions about your education investment and plan your finances accordingly. Whether you're interested in computer science, medicine, 
+          business, or nursing, this tool helps you compare costs and scholarship options for different programs.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-3">
           <div>
-            <h3 className="font-semibold text-slate-800 mb-1">Key Features:</h3>
+            <h3 className="font-semibold text-slate-800 mb-2">Key Features:</h3>
             <ul className="list-disc list-inside text-slate-600 space-y-1">
               <li>B.Tech CSE Fee Calculator with Scholarship Options</li>
               <li>MBBS Fee Structure for Bangladeshi Students</li>
               <li>B.Sc Nursing Fees and Admission Process</li>
               <li>BBA and MBA Course Fees</li>
+              <li>Year-wise Fee Breakdown</li>
+              <li>Grand Total Calculation</li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-slate-800 mb-1">Additional Services:</h3>
+            <h3 className="font-semibold text-slate-800 mb-2">Additional Services:</h3>
             <ul className="list-disc list-inside text-slate-600 space-y-1">
               <li>Scholarship Calculator based on GPA</li>
               <li>Career Guidance for Computer Science Students</li>
               <li>Study Abroad Information for Bangladeshi Students</li>
-              <li>Year-wise Fee Breakdown</li>
+              <li>Copy Fee Breakdown to Clipboard</li>
+              <li>Compare Multiple Scholarship Options</li>
+              <li>Mobile-Friendly Interface</li>
             </ul>
           </div>
+        </div>
+        <div className="mt-4 pt-4 border-t border-blue-200">
+          <h3 className="font-semibold text-slate-800 mb-2">About Sharda University</h3>
+          <p className="text-sm text-slate-700 mb-2">
+            Sharda University is a leading educational institution in Greater Noida, offering world-class education to students from over 95 countries. 
+            The university is known for its excellent infrastructure, experienced faculty, and strong industry connections. For Bangladeshi students, 
+            Sharda University offers various scholarship programs based on academic performance, making quality education more accessible.
+          </p>
+          <p className="text-sm text-slate-700">
+            The university offers programs in engineering, medicine, business, law, humanities, and many other fields. With state-of-the-art facilities, 
+            modern laboratories, and a vibrant campus life, Sharda University provides an excellent environment for international students to pursue 
+            their higher education goals in India.
+          </p>
         </div>
       </div>
 
