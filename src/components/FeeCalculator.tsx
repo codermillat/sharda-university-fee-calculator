@@ -41,7 +41,7 @@ const FeeCalculator: React.FC = () => {
 
   return (
     <div>
-      {/* SEO-friendly visible content for search engines */}
+      {/* SEO-friendly visible content for search engines - Moved to top */}
       <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
         <h2 className="text-xl font-bold text-slate-800 mb-3">Sharda University Fee Calculator for Bangladeshi Students</h2>
         <p className="text-sm text-slate-700 mb-3">
@@ -103,12 +103,28 @@ const FeeCalculator: React.FC = () => {
         </div>
       </div>
 
+      {/* Course Search Section */}
       <CourseSearch 
         onCourseSelect={handleCourseSelect} 
         selectedCourse={selectedCourse}
         onClear={handleClear}
       />
 
+      {/* Course Selection Prompt - Only show when no course selected */}
+      {!selectedCourse && (
+        <div className="text-center mt-8 sm:mt-12 md:mt-16 text-slate-500 px-4">
+          <p className="text-2xl mb-2">🎓</p>
+          <p className="text-sm sm:text-base md:text-lg mb-4">
+            Please select a course to see the detailed fee breakdown.
+          </p>
+          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto">
+            Calculate fees for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses at Sharda University. 
+            Get instant fee breakdown with scholarship options for study in India from Bangladesh.
+          </p>
+        </div>
+      )}
+
+      {/* Fee Breakdown - Show when course is selected */}
       {selectedCourse && (
         <div className="mt-6 sm:mt-8 md:mt-12 animate-fade-in">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-center mb-2 sm:mb-3 md:mb-4 text-slate-800 px-2">
@@ -158,19 +174,6 @@ const FeeCalculator: React.FC = () => {
               high-paying jobs in software development, data science, AI/ML, cyber security, and cloud computing.
             </p>
           </div>
-        </div>
-      )}
-
-      {!selectedCourse && (
-        <div className="text-center mt-8 sm:mt-12 md:mt-16 text-slate-500 px-4">
-          <p className="text-2xl mb-2">🎓</p>
-          <p className="text-sm sm:text-base md:text-lg mb-4">
-            Please select a course to see the detailed fee breakdown.
-          </p>
-          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto">
-            Calculate fees for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses at Sharda University. 
-            Get instant fee breakdown with scholarship options for study in India from Bangladesh.
-          </p>
         </div>
       )}
     </div>
