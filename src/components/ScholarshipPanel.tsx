@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Course } from '../../types';
 import { generateCopyText, formatCurrency } from '../utils/calcFees';
 import { MANDATORY_FEES } from '../../data/fees';
+import { trackCopyButton } from '../utils/analytics';
 
 interface ScholarshipPanelProps {
   course: Course;
@@ -16,6 +17,8 @@ const ScholarshipPanel: React.FC<ScholarshipPanelProps> = ({ course, scholarship
     navigator.clipboard.writeText(textToCopy).then(() => {
       setShowToast(true);
       setTimeout(() => setShowToast(false), 2000); // Hide toast after 2 seconds
+      // Track copy button click
+      trackCopyButton(course.title, scholarship);
     }).catch(err => {
       console.error('Failed to copy text: ', err);
       alert('Failed to copy. Please try again or copy manually.');

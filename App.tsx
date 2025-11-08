@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './src/components/Header';
 import FeeCalculator from './src/components/FeeCalculator';
+import { trackPageView, trackFooterLink, trackSocialLink } from './src/utils/analytics';
 
 const App: React.FC = () => {
+  // Track page view on mount
+  useEffect(() => {
+    trackPageView(window.location.pathname, document.title);
+  }, []);
+
+  const handleFooterLinkClick = (linkType: string, url: string) => {
+    trackFooterLink(linkType, url);
+  };
+
+  const handleSocialLinkClick = (platform: string, url: string) => {
+    trackSocialLink(platform, url);
+  };
+
   return (
     <div className="bg-slate-100 min-h-screen text-slate-800">
       <Header />
@@ -24,6 +38,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="hover:text-blue-600 transition-colors"
+                    onClick={() => handleFooterLinkClick('Official Portal', 'https://bangladesh.shardauniversity.org/')}
                   >
                     Sharda University Bangladesh Portal
                   </a>
@@ -34,6 +49,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="hover:text-blue-600 transition-colors"
+                    onClick={() => handleFooterLinkClick('Course Information', 'https://bangladesh.shardauniversity.org/')}
                   >
                     Updated Course Information
                   </a>
@@ -44,6 +60,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="hover:text-blue-600 transition-colors"
+                    onClick={() => handleFooterLinkClick('Admission Process', 'https://bangladesh.shardauniversity.org/')}
                   >
                     Admission Process 2025
                   </a>
@@ -61,6 +78,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="hover:text-green-600 transition-colors flex items-center gap-2"
+                    onClick={() => handleSocialLinkClick('WhatsApp', 'https://wa.me/918800996151')}
                   >
                     <span>💬</span> Chat with Students on WhatsApp
                   </a>
@@ -71,6 +89,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="hover:text-red-600 transition-colors flex items-center gap-2"
+                    onClick={() => handleSocialLinkClick('YouTube', 'https://www.youtube.com/@StudyAtShardaBD')}
                   >
                     <span>📺</span> YouTube Channel
                   </a>
@@ -81,6 +100,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="hover:text-black transition-colors flex items-center gap-2"
+                    onClick={() => handleSocialLinkClick('TikTok', 'https://www.tiktok.com/@studyatsharda?lang=en')}
                   >
                     <span>🎵</span> TikTok
                   </a>
@@ -92,10 +112,10 @@ const App: React.FC = () => {
             <div>
               <h3 className="text-sm font-bold text-slate-800 mb-3">Quick Links</h3>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-                <li><a href="/" className="hover:text-blue-600 transition-colors">Sharda University Fee Calculator</a></li>
-                <li><a href="/" className="hover:text-blue-600 transition-colors">Scholarship Calculator</a></li>
-                <li><a href="/" className="hover:text-blue-600 transition-colors">Course Fee Breakdown</a></li>
-                <li><a href="/" className="hover:text-blue-600 transition-colors">Study in India from Bangladesh</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors" onClick={() => handleFooterLinkClick('Fee Calculator', '/')}>Sharda University Fee Calculator</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors" onClick={() => handleFooterLinkClick('Scholarship Calculator', '/')}>Scholarship Calculator</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors" onClick={() => handleFooterLinkClick('Course Fee Breakdown', '/')}>Course Fee Breakdown</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors" onClick={() => handleFooterLinkClick('Study in India', '/')}>Study in India from Bangladesh</a></li>
               </ul>
             </div>
           </div>
@@ -114,6 +134,7 @@ const App: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-medium"
+                    onClick={() => handleFooterLinkClick('Official Website', 'https://bangladesh.shardauniversity.org/')}
                   >
                     official university website
                   </a>
@@ -127,6 +148,7 @@ const App: React.FC = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-medium"
+                  onClick={() => handleFooterLinkClick('GitHub', 'https://github.com/codermillat')}
                 >
                   MD MILLAT HOSEN (@codermillat)
                 </a>

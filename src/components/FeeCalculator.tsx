@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Course } from '../../types';
 import CourseSearch from './CourseSearch';
 import ScholarshipPanel from './ScholarshipPanel';
+import { trackCourseSelection, trackScholarshipView, trackExternalLink, trackSocialLink } from '../utils/analytics';
 
 // School full names mapping
 const schoolNames: { [key: string]: string } = {
@@ -20,6 +21,8 @@ const FeeCalculator: React.FC = () => {
 
   const handleCourseSelect = (course: Course) => {
     setSelectedCourse(course);
+    // Track course selection
+    trackCourseSelection(course.title, course.id, course.group);
   };
 
   const handleClear = () => {
@@ -39,8 +42,26 @@ const FeeCalculator: React.FC = () => {
     return options.sort((a, b) => b - a);
   };
 
+  // Track scholarship views when course is selected
+  useEffect(() => {
+    if (selectedCourse) {
+      const scholarshipOptions = getAllScholarshipOptions(selectedCourse);
+      scholarshipOptions.forEach(scholarship => {
+        trackScholarshipView(selectedCourse.title, scholarship);
+      });
+    }
+  }, [selectedCourse]);
+
   const scholarshipOptions = selectedCourse ? getAllScholarshipOptions(selectedCourse) : [];
   const numCards = scholarshipOptions.length;
+
+  const handleExternalLinkClick = (url: string, linkText: string) => {
+    trackExternalLink(url, linkText);
+  };
+
+  const handleSocialLinkClick = (platform: string, url: string) => {
+    trackSocialLink(platform, url);
+  };
 
   return (
     <div className="w-full">
@@ -111,6 +132,7 @@ const FeeCalculator: React.FC = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline"
+                  onClick={() => handleExternalLinkClick('https://bangladesh.shardauniversity.org/', 'Official Sharda University Bangladesh Portal')}
                 >
                   official Sharda University Bangladesh portal
                 </a>
@@ -120,6 +142,7 @@ const FeeCalculator: React.FC = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-green-600 hover:underline"
+                  onClick={() => handleSocialLinkClick('WhatsApp', 'https://wa.me/918800996151')}
                 >
                   WhatsApp
                 </a>

@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Course } from '../../types';
 import { COURSES } from '../../data/courses';
+import { trackSchoolSelection, trackCourseSearch, trackClearButton } from '../utils/analytics';
 
 interface CourseSearchProps {
   onCourseSelect: (course: Course) => void;
@@ -22,6 +23,13 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
       setQuery('');
     }
   }, [selectedCourse]);
+
+  // Track course search
+  useEffect(() => {
+    if (query.length > 2) {
+      trackCourseSearch(query);
+    }
+  }, [query]);
 
   // Get all unique schools
   const schools = useMemo(() => {
@@ -83,7 +91,18 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
     setSelectedSchool('all');
     setIsOpen(false);
     setActiveIndex(-1);
+    trackClearButton();
     onClear();
+  };
+
+  const handleSchoolChange = (school: string) => {
+    setSelectedSchool(school);
+    setQuery('');
+    setIsOpen(false);
+    setActiveIndex(-1);
+    if (school !== 'all') {
+      trackSchoolSelection(schoolNames[school] || school);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -122,12 +141,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
           <select
             id="school-select"
             value={selectedSchool}
-            onChange={(e) => {
-              setSelectedSchool(e.target.value);
-              setQuery('');
-              setIsOpen(false);
-              setActiveIndex(-1);
-            }}
+            onChange={(e) => handleSchoolChange(e.target.value)}
             className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           >
             <option value="all">All Schools</option>
