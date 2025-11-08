@@ -25,13 +25,13 @@ const ScholarshipPanel: React.FC<ScholarshipPanelProps> = ({ course, scholarship
   const title = scholarship > 0 ? `${scholarship}% Scholarship` : 'No Scholarship';
 
   return (
-    <div className="border-2 border-slate-200 rounded-xl shadow-md mb-8 bg-white">
+    <div className="border-2 border-slate-200 rounded-xl shadow-md bg-white h-full flex flex-col">
       {/* Panel Header */}
-      <div className="flex justify-between items-center p-4 bg-slate-50 rounded-t-xl border-b-2 border-slate-200">
-        <h3 className="text-xl md:text-2xl font-bold text-slate-800">{title}</h3>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 p-4 bg-slate-50 rounded-t-xl border-b-2 border-slate-200">
+        <h3 className="text-lg md:text-xl font-bold text-slate-800">{title}</h3>
         <button
           onClick={handleCopy}
-          className="px-5 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform active:scale-95"
+          className="w-full sm:w-auto px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform active:scale-95"
           aria-label={`Copy fee breakdown for ${title}`}
         >
           Copy
@@ -39,8 +39,8 @@ const ScholarshipPanel: React.FC<ScholarshipPanelProps> = ({ course, scholarship
       </div>
 
       {/* Fee Breakdown Table */}
-      <div className="p-4 md:p-6">
-        <div className="space-y-4">
+      <div className="p-4 md:p-6 flex-grow overflow-y-auto">
+        <div className="space-y-3">
           {course.years.map((yearTuition, index) => {
             const year = index + 1;
             const scholarshipAmount = (yearTuition * scholarship) / 100;

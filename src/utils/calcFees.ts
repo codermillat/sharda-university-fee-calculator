@@ -48,9 +48,9 @@ export const generateCopyText = (course: Course, scholarshipPercentage: number):
       text += `Net Tuition: ${formatCurrency(netTuition)}\n`;
     }
     if (year === 1) {
-      text += `Admission Fee: ${formatCurrency(mandatoryFee)} (Including Registration fee, Examination fee, Medical Insurance, eFRRO assistance)\n`;
+      text += `Admission Fee: ${formatCurrency(mandatoryFee)} (Including Registration fee, Examination fee, Insurance fee, and FRRO/VISA assistance)\n`;
     } else {
-      text += `Other Fees: ${formatCurrency(mandatoryFee)} (Registration fee, Examination fee, Medical Insurance, eFRRO assistance)\n`;
+      text += `Other Fees: ${formatCurrency(mandatoryFee)} (Examination Fee, Registration fee, Insurance fee, and FRRO)\n`;
     }
     text += `✅ *Total Year ${year} = ${formatCurrency(yearTotalWithScholarship)}*\n\n`;
   });
