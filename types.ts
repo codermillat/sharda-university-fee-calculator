@@ -1,9 +1,11 @@
 export interface Course {
   id: string;
-  programName: string;
-  school: string;
-  annualFees: number[]; // Replaces firstYearTuitionFee, length implies duration
-  scholarshipGroup: 1 | 2 | 3 | 4;
+  title: string;
+  group: string;
+  durationYears: number;
+  years: number[];
+  scholarships: number[];
+  notes?: string;
 }
 
 export interface YearlyFeeBreakdown {
