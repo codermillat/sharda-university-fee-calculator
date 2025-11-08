@@ -1,16 +1,27 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Course } from '../../types';
 import { COURSES } from '../../data/courses';
 
 interface CourseSearchProps {
   onCourseSelect: (course: Course) => void;
+  selectedCourse: Course | null;
+  onClear: () => void;
 }
 
-const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect }) => {
+const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCourse, onClear }) => {
   const [query, setQuery] = useState('');
   const [selectedSchool, setSelectedSchool] = useState<string>('all');
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+
+  // Sync query with selected course
+  useEffect(() => {
+    if (selectedCourse) {
+      setQuery(selectedCourse.title);
+    } else {
+      setQuery('');
+    }
+  }, [selectedCourse]);
 
   // Get all unique schools
   const schools = useMemo(() => {
@@ -67,6 +78,14 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect }) => {
     setIsOpen(false);
   };
 
+  const handleClear = () => {
+    setQuery('');
+    setSelectedSchool('all');
+    setIsOpen(false);
+    setActiveIndex(-1);
+    onClear();
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     // Get all courses in a flat array for keyboard navigation
     const allCourses: Course[] = [];
@@ -93,11 +112,11 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect }) => {
   });
 
   return (
-    <div className="w-full max-w-4xl mx-auto mb-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
         {/* School Selector */}
         <div>
-          <label htmlFor="school-select" className="block text-lg font-semibold text-gray-800 mb-2">
+          <label htmlFor="school-select" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2">
             Select School
           </label>
           <select
@@ -109,7 +128,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect }) => {
               setIsOpen(false);
               setActiveIndex(-1);
             }}
-            className="w-full px-4 py-3 text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           >
             <option value="all">All Schools</option>
             {schools.map(school => (
@@ -120,37 +139,51 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect }) => {
           </select>
         </div>
 
-        {/* Course Search */}
+        {/* Course Search with Clear Button */}
         <div>
-          <label htmlFor="course-search" className="block text-lg font-semibold text-gray-800 mb-2">
+          <label htmlFor="course-search" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2">
             Search Course
           </label>
-          <input
-            id="course-search"
-            type="text"
-            value={query}
-            onChange={e => {
-              setQuery(e.target.value);
-              setIsOpen(true);
-              setActiveIndex(-1);
-            }}
-            onKeyDown={handleKeyDown}
-            onFocus={() => setIsOpen(true)}
-            onBlur={() => setTimeout(() => setIsOpen(false), 150)}
-            placeholder="e.g., B.Tech CSE, MBBS, Nursing..."
-            className="w-full px-4 py-3 text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            autoComplete="off"
-          />
+          <div className="relative">
+            <input
+              id="course-search"
+              type="text"
+              value={query}
+              onChange={e => {
+                setQuery(e.target.value);
+                setIsOpen(true);
+                setActiveIndex(-1);
+              }}
+              onKeyDown={handleKeyDown}
+              onFocus={() => setIsOpen(true)}
+              onBlur={() => setTimeout(() => setIsOpen(false), 150)}
+              placeholder="e.g., B.Tech CSE, MBBS, Nursing..."
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-10 sm:pr-12 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              autoComplete="off"
+            />
+            {query && (
+              <button
+                onClick={handleClear}
+                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none focus:text-slate-600 p-1 transition"
+                aria-label="Clear course search"
+                type="button"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Course Dropdown List */}
       {isOpen && hasCourses && (
-        <div className="relative z-10 w-full mt-2 bg-white border border-slate-300 rounded-lg shadow-xl max-h-96 overflow-y-auto">
+        <div className="relative z-10 w-full mt-2 bg-white border border-slate-300 rounded-lg shadow-xl max-h-80 sm:max-h-96 overflow-y-auto">
           {Object.entries(filteredCourses).map(([school, courses]) => (
             <div key={school}>
               {/* School Header */}
-              <div className="sticky top-0 bg-blue-600 text-white px-4 py-2 font-bold text-sm">
+              <div className="sticky top-0 bg-blue-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 font-bold text-xs sm:text-sm">
                 {schoolNames[school] || school}
               </div>
               {/* Courses in this school */}
@@ -162,14 +195,14 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect }) => {
                       key={course.id}
                       onClick={() => handleSelect(course)}
                       onMouseEnter={() => setActiveIndex(globalIndex)}
-                      className={`px-4 py-3 cursor-pointer text-base hover:bg-blue-50 transition ${
+                      className={`px-3 sm:px-4 py-2 sm:py-3 cursor-pointer text-sm sm:text-base hover:bg-blue-50 transition ${
                         globalIndex === activeIndex ? 'bg-blue-100' : ''
                       }`}
                       role="option"
                       aria-selected={globalIndex === activeIndex}
                     >
                       <span className="font-bold block">{course.title}</span>
-                      <span className="text-sm text-slate-500">{course.durationYears} Years</span>
+                      <span className="text-xs sm:text-sm text-slate-500">{course.durationYears} Years</span>
                     </li>
                   );
                 })}

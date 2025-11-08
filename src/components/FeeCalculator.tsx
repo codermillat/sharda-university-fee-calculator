@@ -22,6 +22,10 @@ const FeeCalculator: React.FC = () => {
     setSelectedCourse(course);
   };
 
+  const handleClear = () => {
+    setSelectedCourse(null);
+  };
+
   // Get all scholarship options for the course (including "No Scholarship")
   const getAllScholarshipOptions = (course: Course): number[] => {
     const options = [0]; // Always include "No Scholarship"
@@ -37,19 +41,23 @@ const FeeCalculator: React.FC = () => {
 
   return (
     <div>
-      <CourseSearch onCourseSelect={handleCourseSelect} />
+      <CourseSearch 
+        onCourseSelect={handleCourseSelect} 
+        selectedCourse={selectedCourse}
+        onClear={handleClear}
+      />
 
       {selectedCourse && (
-        <div className="mt-12 animate-fade-in">
-          <h2 className="text-3xl font-extrabold text-center mb-4 text-slate-800">
+        <div className="mt-6 sm:mt-8 md:mt-12 animate-fade-in">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-center mb-2 sm:mb-3 md:mb-4 text-slate-800 px-2">
             Fee Structure for: <span className="text-blue-600">{selectedCourse.title}</span>
           </h2>
-          <p className="text-center text-slate-500 mb-8">
+          <p className="text-center text-xs sm:text-sm md:text-base text-slate-500 mb-4 sm:mb-6 md:mb-8 px-2">
             Duration: {selectedCourse.durationYears} Years · School: {schoolNames[selectedCourse.group] || selectedCourse.group}
           </p>
 
-          {/* Scholarship Panels Grid - Side by Side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Scholarship Panels Grid - Side by Side, Responsive */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {getAllScholarshipOptions(selectedCourse).map(scholarshipPercent => (
               <ScholarshipPanel
                 key={scholarshipPercent}
@@ -62,9 +70,9 @@ const FeeCalculator: React.FC = () => {
       )}
 
       {!selectedCourse && (
-        <div className="text-center mt-16 text-slate-500">
+        <div className="text-center mt-8 sm:mt-12 md:mt-16 text-slate-500 px-4">
           <p className="text-2xl mb-2">🎓</p>
-          <p className="text-lg">Please select a course to see the detailed fee breakdown.</p>
+          <p className="text-sm sm:text-base md:text-lg">Please select a course to see the detailed fee breakdown.</p>
         </div>
       )}
     </div>

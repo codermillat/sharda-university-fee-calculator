@@ -56,12 +56,11 @@ export const generateCopyText = (course: Course, scholarshipPercentage: number):
   });
 
   text += '---\n\n';
-  text += `*GRAND TOTAL (Tuition + mandatory fees)*\n`;
+  text += `*GRAND TOTAL (All ${course.durationYears} Years)*\n`;
+  text += `*Total Fees: ${formatCurrency(grandTotalWithScholarship)}*\n`;
   if (scholarshipPercentage > 0) {
+    text += `\n*Savings with ${scholarshipPercentage}% Scholarship: ${formatCurrency(grandTotalWithoutScholarship - grandTotalWithScholarship)}*\n`;
     text += `Without scholarship: ${formatCurrency(grandTotalWithoutScholarship)}\n`;
-    text += `*After ${scholarshipPercentage}% scholarship: ${formatCurrency(grandTotalWithScholarship)}*\n`;
-  } else {
-    text += `*Total: ${formatCurrency(grandTotalWithScholarship)}*\n`;
   }
 
   return text;
