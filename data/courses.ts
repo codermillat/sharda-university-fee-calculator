@@ -19,7 +19,7 @@ import { Course } from '../types';
  * - notes: (Optional) Any specific notes about the course
  */
 
-export const COURSES: Course[] = [
+const BASE_COURSES: Course[] = [
   // ========== SHARDA SCHOOL OF ENGINEERING & TECHNOLOGY (SSET) ==========
   // Group 1: [50, 20] - B.Tech All Specializations, BCA, MCA
 
@@ -640,3 +640,52 @@ export const COURSES: Course[] = [
     scholarships: [], // Group 4 - No scholarship
   },
 ];
+
+const createLateralEntryCourse = (config: { baseId: string; title: string; notes?: string }): Course => {
+  const baseCourse = BASE_COURSES.find(course => course.id === config.baseId);
+
+  if (!baseCourse) {
+    throw new Error(`Unable to create lateral entry course. Base course with id "${config.baseId}" not found.`);
+  }
+
+  const lateralDuration = Math.max(baseCourse.durationYears - 1, 1);
+  const tuitionYears = baseCourse.years.slice(baseCourse.years.length - lateralDuration);
+
+  return {
+    id: `${config.baseId}-lateral`,
+    title: config.title,
+    group: baseCourse.group,
+    durationYears: lateralDuration,
+    years: tuitionYears,
+    scholarships: baseCourse.scholarships.length > 0 ? baseCourse.scholarships : [50, 20],
+    notes: config.notes ?? 'Lateral Entry (Direct Second Year)',
+  };
+};
+
+const LATERAL_ENTRY_CONFIGS: Array<{ baseId: string; title: string; notes?: string }> = [
+  { baseId: 'btech-cse', title: 'B.Tech. Lateral Entry - Computer Science & Engineering (CSE)' },
+  { baseId: 'btech-cse-blockchain', title: 'B.Tech. Lateral Entry - CSE (Block Chain Technology)' },
+  { baseId: 'btech-cse-ai-ml', title: 'B.Tech. Lateral Entry - CSE (Artificial Intelligence & Machine Learning)' },
+  { baseId: 'btech-cse-ar-vr', title: 'B.Tech. Lateral Entry - CSE (Augmented & Virtual Reality)' },
+  { baseId: 'btech-cse-cyber', title: 'B.Tech. Lateral Entry - CSE (Cyber Security & Forensics)' },
+  { baseId: 'btech-cse-iot', title: 'B.Tech. Lateral Entry - CSE (AI for IoT applications)' },
+  { baseId: 'btech-cse-cloud', title: 'B.Tech. Lateral Entry - CSE (Cloud Technology & Virtualization)' },
+  { baseId: 'btech-cse-data-science', title: 'B.Tech. Lateral Entry - CSE (Data Science & Analytics)' },
+  { baseId: 'btech-cse-fullstack', title: 'B.Tech. Lateral Entry - CSE (Full Stack Development)' },
+  { baseId: 'btech-it', title: 'B.Tech. Lateral Entry - Information Technology (IT)' },
+  { baseId: 'btech-eee-ev', title: 'B.Tech. Lateral Entry - EEE (Electric Vehicle Technology)' },
+  { baseId: 'btech-eee-renewable', title: 'B.Tech. Lateral Entry - EEE (Renewable Energy Systems)' },
+  { baseId: 'btech-ece-robotics', title: 'B.Tech. Lateral Entry - ECE (Robotics and Automation)' },
+  { baseId: 'btech-ece-vlsi', title: 'B.Tech. Lateral Entry - ECE (VLSI Design and Technology)' },
+  { baseId: 'btech-ece-iot', title: 'B.Tech. Lateral Entry - Electronics & Computer Engg. (IoT)' },
+  { baseId: 'btech-ece-ai-ml', title: 'B.Tech. Lateral Entry - Electronics & Computer Engg. (AI and ML)' },
+  { baseId: 'btech-me-automotive', title: 'B.Tech. Lateral Entry - Mechanical Engineering (Automotive Electrical Vehicles)' },
+  { baseId: 'btech-me-mechatronics', title: 'B.Tech. Lateral Entry - Mechanical Engineering (Mechatronics)' },
+  { baseId: 'btech-civil', title: 'B.Tech. Lateral Entry - Civil Engineering' },
+  { baseId: 'btech-biotech-stem', title: 'B.Tech. Lateral Entry - Biotechnology (Stem Cell & Tissue Engg.)' },
+  { baseId: 'btech-biotech-genetic', title: 'B.Tech. Lateral Entry - Biotechnology (Genetic Engineering)' },
+];
+
+const LATERAL_ENTRY_COURSES: Course[] = LATERAL_ENTRY_CONFIGS.map(createLateralEntryCourse);
+
+export const COURSES: Course[] = [...BASE_COURSES, ...LATERAL_ENTRY_COURSES];
