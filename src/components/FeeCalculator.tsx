@@ -13,7 +13,10 @@ const schoolNames: { [key: string]: string } = {
   'SBSR': 'Sharda School of Basic Sciences & Research',
   'SNSR': 'Sharda School of Nursing Sciences & Research',
   'SMSR': 'Sharda School of Medical Sciences & Research',
-  'Pharmacy': 'Pharmacy',
+  'SAHS': 'Sharda School of Allied Health Sciences',
+  'SDAP': 'Sharda School of Design, Architecture & Planning',
+  'SMFE': 'Sharda School of Media, Film and Entertainment',
+  'Pharmacy': 'School of Pharmacy',
 };
 
 const FeeCalculator: React.FC = () => {

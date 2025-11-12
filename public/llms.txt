@@ -3,27 +3,46 @@
 
 # Site Information
 Site: https://sharda-university-fee-calculator.vercel.app/
-Name: Sharda University Fee Calculator
-Description: A free online tool to calculate Sharda University fees for Bangladeshi students. Get detailed fee breakdowns for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses with scholarship calculator.
+Name: Sharda University Fee Calculator 2025
+Description: Comprehensive free online tool to calculate Sharda University fees for Bangladeshi students. Get detailed fee breakdowns for Certificate, Graduate (B.Tech CSE, BBA, B.Sc, B.Arch, BPT), Post Graduate (MBA, M.Tech, M.Sc, MCA), Integrated (LLB), MBBS, BDS, Nursing, Pharmacy, Design, Media, and Allied Health Sciences courses with scholarship calculator.
 Author: MD MILLAT HOSEN (@codermillat)
 GitHub: https://github.com/codermillat
 
 # Purpose
-This website helps prospective students from Bangladesh calculate tuition fees, admission fees, and total costs for various courses at Sharda University, Greater Noida, India. It includes scholarship calculations based on GPA and provides year-wise fee breakdowns.
+This comprehensive website helps prospective students from Bangladesh calculate tuition fees, admission fees, and total costs for ALL courses at Sharda University, Greater Noida, India. It includes scholarship calculations based on GPA and provides detailed year-wise fee breakdowns with multiple scholarship options (50%, 30%, 25%, 20%).
+
+# Programme Categories Covered
+1. Certificate Courses: Certificate of Proficiency (English), Advance Certificate of Proficiency (English)
+2. Graduate Courses: B.Tech (CSE with 9+ specializations, IT, EEE, ECE, ME, Civil, Biotechnology), BBA (7 specializations), B.Com, B.Sc (20+ specializations), B.Arch, B.Design (3 specializations), B.A (8+ specializations), BCA, BPT, B.Sc Allied Health Sciences (7+ courses), B.Pharm
+3. Post Graduate Courses: MBA (8 specializations), M.Tech (multiple specializations), M.Sc (15+ specializations), MCA, M.Com, M.A (8+ specializations), M.Design, MPT, M.Sc Allied Health Sciences, M.Pharm, LL.M
+4. Integrated Courses: B.B.A. LL.B., B.A. LL.B.
+5. Medical Courses: MBBS, BDS
 
 # Main Features
-- Fee calculator for multiple courses (B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA, etc.)
-- Scholarship calculator based on GPA (50% for GPA 3.5-5.0, 20% for GPA 3.0-3.4)
-- Year-wise fee breakdown
-- Grand total calculation
-- Copy to clipboard functionality
-- Mobile-friendly interface
+- Comprehensive fee calculator covering 200+ courses across all programmes
+- Programme filter (Certificate, Graduate, Post Graduate, Integrated)
+- Stream filter (Engineering, Management, Law, Medical, Nursing, Pharmacy, Design, Media, Allied Health Sciences, Basic Sciences, Humanities & Social Sciences)
+- Advanced course search with abbreviation matching and multi-word search
+- Scholarship calculator based on GPA with 4 scholarship tiers (50%, 30%, 25%, 20%)
+- Year-wise fee breakdown for each course
+- Grand total calculation including mandatory fees
+- Copy to clipboard functionality for fee breakdowns
+- Mobile-friendly responsive interface
+- Course listings grouped by school with yearly fees displayed
+- Lateral Entry course calculator for B.Tech programs
+
+# Scholarship Information
+- Group 1 (50% & 20%): B.Tech all specializations, BBA all specializations, MBA all specializations, BCA, MCA, B.Arch, B.Design, M.Design, LLB Integrated, B.A Film Television, BJMC, MJMC, M.Advertising
+- Group 2 (25%): B.Sc Nursing
+- Group 3 (30% & 20%): Most B.Sc programs, M.Sc programs, B.A programs, M.A programs, B.Sc Animation VFX, M.Tech programs, M.Com, Certificate courses
+- Group 4 (No Scholarship): MBBS, BDS, M.Sc Nursing, Medical M.Sc, MPT, Pharmacy courses, BPT
 
 # Target Audience
-Prospective students from Bangladesh who want to study at Sharda University in India.
+Prospective students from Bangladesh who want to study at Sharda University in India. The website specifically targets Bangladeshi students seeking information about fees, scholarships, and admission processes.
 
 # Official Links
 Official Website: https://bangladesh.shardauniversity.org/
+Direct Application: https://global.sharda.ac.in/bangladesh/
 YouTube: https://www.youtube.com/@StudyAtShardaBD
 TikTok: https://www.tiktok.com/@studyatsharda
 WhatsApp: https://wa.me/918800996151
@@ -33,18 +52,43 @@ WhatsApp: https://wa.me/918800996151
 - Hosted on Vercel
 - Uses Tailwind CSS for styling
 - Responsive design for mobile and desktop
+- Google Analytics GA4 with enhanced measurement
+- Comprehensive SEO optimization with structured data
 
-# Content Topics
-- Sharda University fees
-- B.Tech Computer Science Engineering fees
-- MBBS fees in India
+# Content Topics Covered
+- Sharda University fees for all courses
+- B.Tech Computer Science Engineering fees with all specializations (AI/ML, Blockchain, Cyber Security, Data Science, Full Stack, Cloud Computing, IoT, AR/VR)
+- MBBS and BDS fees
 - B.Sc Nursing fees
+- BBA and MBA fees with all specializations
+- Certificate courses fees
+- Design courses fees (Interior, Fashion, Communication)
+- Media courses fees (Film Television, Journalism, Animation VFX, Gaming)
+- Pharmacy courses fees (B.Pharm, D.Pharm, Pharm D, M.Pharm)
+- Allied Health Sciences fees (BPT, MPT, Radiology, BMLT, Cardiovascular Technology, Forensic Science, Optometry, Nutrition & Dietetics)
+- Architecture fees (B.Arch)
 - Scholarship programs for Bangladeshi students
 - Study in India from Bangladesh
-- Career options after B.Tech CSE
+- Career options after B.Tech CSE and Computer Science
 - Computer Science future scope
 - Admission process for Sharda University
+- Lateral Entry programs
+- Year-wise fee structure
+- Mandatory fees and additional charges
+
+# Course Count
+- Total Courses: 200+ individual courses
+- B.Tech Specializations: 20+ (including Lateral Entry)
+- BBA Specializations: 7
+- MBA Specializations: 8
+- B.Sc Specializations: 20+
+- M.Tech Specializations: 15+
+- M.Sc Specializations: 15+
+- Design Courses: 5
+- Media Courses: 6
+- Allied Health Sciences: 10+
+- Pharmacy Courses: 4
 
 # Last Updated
-2025-01-08
+2025-01-12
 
