@@ -6,7 +6,7 @@ import { trackCopyButton } from '../utils/analytics';
 
 interface ScholarshipPanelProps {
   course: Course;
-  scholarship: number; // e.g., 50 for 50%, 0 for "No Scholarship"
+  scholarship: number; // e.g., 50 for 50%, 0 for "Without Scholarship"
 }
 
 const ScholarshipPanel: React.FC<ScholarshipPanelProps> = ({ course, scholarship }) => {
@@ -25,7 +25,7 @@ const ScholarshipPanel: React.FC<ScholarshipPanelProps> = ({ course, scholarship
     });
   };
 
-  const title = scholarship > 0 ? `${scholarship}% Scholarship` : 'No Scholarship';
+  const title = scholarship > 0 ? `${scholarship}% Scholarship` : 'Without Scholarship';
 
   // Calculate grand totals
   let grandTotalWithScholarship = 0;

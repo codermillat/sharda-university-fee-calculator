@@ -181,7 +181,7 @@ export const trackCourseSearch = (searchQuery: string): void => {
  * Track scholarship panel view (HIGH VALUE - indicates serious interest)
  */
 export const trackScholarshipView = (courseTitle: string, scholarshipPercent: number): void => {
-  const scholarshipLabel = scholarshipPercent > 0 ? `${scholarshipPercent}% Scholarship` : 'No Scholarship';
+  const scholarshipLabel = scholarshipPercent > 0 ? `${scholarshipPercent}% Scholarship` : 'Without Scholarship';
   
   trackEvent('view_item', {
     item_name: courseTitle,
@@ -206,7 +206,7 @@ export const trackScholarshipView = (courseTitle: string, scholarshipPercent: nu
  * Track copy button click (HIGH VALUE CONVERSION - user is saving info)
  */
 export const trackCopyButton = (courseTitle: string, scholarshipPercent: number): void => {
-  const scholarshipLabel = scholarshipPercent > 0 ? `${scholarshipPercent}% Scholarship` : 'No Scholarship';
+  const scholarshipLabel = scholarshipPercent > 0 ? `${scholarshipPercent}% Scholarship` : 'Without Scholarship';
   
   // Calculate estimated course value for conversion tracking
   const courseCategory = getCourseCategory(courseTitle);

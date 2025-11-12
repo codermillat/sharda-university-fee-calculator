@@ -32,9 +32,9 @@ const FeeCalculator: React.FC = () => {
     setSelectedCourse(null);
   };
 
-  // Get all scholarship options for the course (including "No Scholarship")
+  // Get all scholarship options for the course (including "Without Scholarship")
   const getAllScholarshipOptions = (course: Course): number[] => {
-    const options = [0]; // Always include "No Scholarship"
+    const options = [0]; // Always include "Without Scholarship"
     // Add all scholarship percentages
     course.scholarships.forEach(scholarship => {
       if (!options.includes(scholarship)) {

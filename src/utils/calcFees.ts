@@ -24,7 +24,7 @@ export const formatCurrency = (amount: number): string => {
 export const generateCopyText = (course: Course, scholarshipPercentage: number): string => {
   let text = `*Estimate for: ${course.title}*\n`;
   text += `*Duration:* ${course.durationYears} years\n`;
-  text += `*Option:* ${scholarshipPercentage > 0 ? `${scholarshipPercentage}% Scholarship` : 'No Scholarship'}\n\n`;
+  text += `*Option:* ${scholarshipPercentage > 0 ? `${scholarshipPercentage}% Scholarship` : 'Without Scholarship'}\n\n`;
 
   let grandTotalWithoutScholarship = 0;
   let grandTotalWithScholarship = 0;
