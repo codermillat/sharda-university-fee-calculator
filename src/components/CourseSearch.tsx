@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Course } from '../../types';
 import { COURSES } from '../../data/courses';
-import { trackSchoolSelection, trackCourseSearch, trackClearButton } from '../utils/analytics';
+import { trackCourseSearch, trackClearButton, trackProgrammeSelection, trackStreamSelection } from '../utils/analytics';
+import { formatCurrency } from '../utils/calcFees';
 
 interface CourseSearchProps {
   onCourseSelect: (course: Course) => void;
@@ -11,7 +12,9 @@ interface CourseSearchProps {
 
 const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCourse, onClear }) => {
   const [query, setQuery] = useState('');
-  const [selectedSchool, setSelectedSchool] = useState<string>('all');
+  // Removed school filter
+  const [selectedProgramme, setSelectedProgramme] = useState<string>('all');
+  const [selectedStream, setSelectedStream] = useState<string>('all');
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -31,12 +34,6 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
     }
   }, [query]);
 
-  // Get all unique schools
-  const schools = useMemo(() => {
-    const uniqueSchools = Array.from(new Set(COURSES.map(course => course.group)));
-    return uniqueSchools.sort();
-  }, []);
-
   // Get school full names mapping
   const schoolNames: { [key: string]: string } = {
     'SSET': 'Sharda School of Engineering & Technology',
@@ -49,13 +46,84 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
     'Pharmacy': 'Pharmacy',
   };
 
+  // Programme filter options
+  const programmeOptions = [
+    { value: 'all', label: 'Select Programme' },
+    { value: 'graduate', label: 'Graduate' },
+    { value: 'post_graduate', label: 'Post Graduate' },
+    { value: 'integrated', label: 'Integrated' },
+  ];
+
+  // Helpers to infer programme and stream
+  const getProgrammeLevel = (course: Course): 'graduate' | 'post_graduate' | 'diploma' | 'integrated' => {
+    const t = course.title.toLowerCase();
+    if (t.includes('integrated') || t.includes('ll.b') || t.includes('llb')) return 'integrated';
+    if (t.startsWith('m.') || t.startsWith('m ') || t.startsWith('mba') || t.startsWith('mca') || t.startsWith('m.sc') || t.startsWith('mtech') || t.startsWith('m.tech') || t.startsWith('mcom') || t.startsWith('m.com') || t.startsWith('ll.m') || t.startsWith('llm')) {
+      return 'post_graduate';
+    }
+    if (t.startsWith('d.') || t.startsWith('d ') || t.includes('d. pharm') || t.includes('d pharm') || t.includes('diploma')) return 'diploma';
+    return 'graduate';
+  };
+
+  const getStream = (course: Course): string => {
+    if (course.group === 'SSET') return 'Engineering';
+    if (course.group === 'SBS') return 'Management';
+    if (course.group === 'SOL') return 'Law';
+    if (course.group === 'SHSS') return 'Humanities & Social Sciences';
+    if (course.group === 'SBSR') return 'Basic Sciences';
+    if (course.group === 'SNSR') return 'Nursing';
+    if (course.group === 'Pharmacy') return 'Pharmacy';
+    if (course.group === 'SMSR') {
+      const t = course.title.toLowerCase();
+      if (t.includes('dental') || t.includes('bds')) return 'Dental';
+      if (t.includes('physiotherapy') || t.includes('allied')) return 'Allied Health Sciences';
+      return 'Medical';
+    }
+    return 'Engineering';
+  };
+
+  // Dynamic Stream filter options based on selected programme
+  const streamOptions = useMemo(() => {
+    // Start from all non-diploma courses
+    let base = COURSES.filter(c => getProgrammeLevel(c) !== 'diploma');
+    // If programme selected, narrow down to that programme
+    if (selectedProgramme !== 'all') {
+      base = base.filter(c => getProgrammeLevel(c) === selectedProgramme);
+    }
+    const uniqueStreams = Array.from(new Set(base.map(getStream)));
+    const options: Array<{ value: string; label: string }> = [{ value: 'all', label: 'Select Stream' }].concat(
+      uniqueStreams
+        .sort()
+        .map(s => ({ value: s, label: s }))
+    );
+    return options;
+  }, [selectedProgramme]);
+
+  // Ensure selected stream stays valid for the chosen programme
+  useEffect(() => {
+    const availableValues = new Set(streamOptions.map(o => o.value));
+    if (!availableValues.has(selectedStream)) {
+      setSelectedStream('all');
+    }
+  }, [streamOptions, selectedStream]);
+
+  // (helpers moved above)
+
   // Filter courses by school and search query
-  const filteredCourses = useMemo(() => {
+  const filteredCourses = useMemo<{ [key: string]: Course[] }>(() => {
     let courses = COURSES;
 
-    // Filter by school
-    if (selectedSchool !== 'all') {
-      courses = courses.filter(course => course.group === selectedSchool);
+    // Always exclude Diploma-level courses
+    courses = courses.filter(course => getProgrammeLevel(course) !== 'diploma');
+
+    // Filter by programme
+    if (selectedProgramme !== 'all') {
+      courses = courses.filter(course => getProgrammeLevel(course) === selectedProgramme);
+    }
+
+    // Filter by stream
+    if (selectedStream !== 'all') {
+      courses = courses.filter(course => getStream(course) === selectedStream);
     }
 
     // Filter by search query
@@ -78,37 +146,33 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
     });
 
     return grouped;
-  }, [query, selectedSchool]);
+  }, [query, selectedProgramme, selectedStream]);
 
   const handleSelect = (course: Course) => {
     setQuery(course.title);
     onCourseSelect(course);
     setIsOpen(false);
+    // Smooth scroll to fee structure section
+    setTimeout(() => {
+      const el = document.getElementById('fee-structure');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
   };
 
   const handleClear = () => {
     setQuery('');
-    setSelectedSchool('all');
     setIsOpen(false);
     setActiveIndex(-1);
     trackClearButton();
     onClear();
   };
 
-  const handleSchoolChange = (school: string) => {
-    setSelectedSchool(school);
-    setQuery('');
-    setIsOpen(false);
-    setActiveIndex(-1);
-    if (school !== 'all') {
-      trackSchoolSelection(schoolNames[school] || school);
-    }
-  };
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
     // Get all courses in a flat array for keyboard navigation
     const allCourses: Course[] = [];
-    Object.values(filteredCourses).forEach(schoolCourses => {
+    (Object.values(filteredCourses) as Course[][]).forEach((schoolCourses: Course[]) => {
       allCourses.push(...schoolCourses);
     });
 
@@ -126,31 +190,77 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
   // Check if there are any courses to show
   const hasCourses = Object.keys(filteredCourses).length > 0;
   const allCoursesFlat: Course[] = [];
-  Object.values(filteredCourses).forEach(schoolCourses => {
+  (Object.values(filteredCourses) as Course[][]).forEach((schoolCourses: Course[]) => {
     allCoursesFlat.push(...schoolCourses);
   });
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
-        {/* School Selector */}
+      <div className="mb-1">
+        <p className="text-xs sm:text-sm font-semibold text-slate-700 text-center md:text-left">Filter Programme</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 mb-2 sm:mb-3">
+        {/* Programme Selector */}
         <div>
-          <label htmlFor="school-select" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2 text-center md:text-left">
-            Select School
+          <label htmlFor="programme-select" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2 text-center md:text-left">
+            Select Programme
           </label>
           <select
-            id="school-select"
-            value={selectedSchool}
-            onChange={(e) => handleSchoolChange(e.target.value)}
-            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            id="programme-select"
+            value={selectedProgramme}
+            onChange={(e) => {
+              const programme = e.target.value;
+              setSelectedProgramme(programme);
+              // Reset stream when programme changes
+              setSelectedStream('all');
+              setIsOpen(false);
+              setActiveIndex(-1);
+              // Track programme selection
+              if (programme !== 'all') {
+                trackProgrammeSelection(programme);
+              }
+            }}
+            className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           >
-            <option value="all">All Schools</option>
-            {schools.map(school => (
-              <option key={school} value={school}>
-                {schoolNames[school] || school}
-              </option>
+            {programmeOptions.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
             ))}
           </select>
+        </div>
+
+        {/* Stream Selector */}
+        <div>
+          <label htmlFor="stream-select" className="block text-sm sm:text-base font-semibold text-gray-800 mb-1.5 sm:mb-2 text-center md:text-left">
+            Select Stream
+          </label>
+          <select
+            id="stream-select"
+            value={selectedStream}
+            onChange={(e) => {
+              const stream = e.target.value;
+              setSelectedStream(stream);
+              setIsOpen(false);
+              setActiveIndex(-1);
+              // Track stream selection
+              if (stream !== 'all') {
+                trackStreamSelection(stream);
+              }
+            }}
+            disabled={selectedProgramme === 'all'}
+            title={selectedProgramme === 'all' ? 'Select a Programme first' : 'Select Stream'}
+            className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border-2 rounded-lg shadow-sm transition ${
+              selectedProgramme === 'all'
+                ? 'border-slate-200 bg-slate-100 text-slate-400 cursor-not-allowed'
+                : 'border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+            }`}
+          >
+            {streamOptions.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+          {selectedProgramme === 'all' && (
+            <p className="mt-0.5 text-[11px] text-slate-500 text-center md:text-left">Choose a Programme to enable Stream.</p>
+          )}
         </div>
 
         {/* Course Search with Clear Button */}
@@ -170,9 +280,9 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
               }}
               onKeyDown={handleKeyDown}
               onFocus={() => setIsOpen(true)}
-              onBlur={() => setTimeout(() => setIsOpen(false), 150)}
-              placeholder="e.g., B.Tech CSE, MBBS, Nursing..."
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-10 sm:pr-12 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            onBlur={() => setTimeout(() => setIsOpen(false), 150)}
+            placeholder="Type course name (e.g., B.Tech CSE, MBBS, Nursing...)"
+            className="w-full px-3 sm:px-4 py-2 sm:py-2.5 pr-10 sm:pr-12 text-sm sm:text-base border-2 border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
               autoComplete="off"
             />
             {query && (
@@ -191,10 +301,57 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ onCourseSelect, selectedCou
         </div>
       </div>
 
-      {/* Course Dropdown List - Centered */}
+      {/* Inline Course List - grouped by school, always visible */}
+      {hasCourses && (
+        <div className="mt-2 sm:mt-3">
+          {(Object.entries(filteredCourses) as Array<[string, Course[]]>).map(([school, courses]) => (
+            <div key={school} className="mb-3 sm:mb-4">
+              <div className="bg-slate-100 text-slate-800 px-3 sm:px-4 py-1.5 font-bold text-sm sm:text-base rounded-md">
+                {schoolNames[school] || school}
+              </div>
+              <ul className="divide-y divide-slate-200 border border-slate-200 rounded-md overflow-hidden bg-white">
+                {courses.map((course) => (
+                  <li
+                    key={course.id}
+                    onClick={() => handleSelect(course)}
+                    className="px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-blue-50 cursor-pointer transition group"
+                    role="button"
+                    aria-label={`Select ${course.title}`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1">
+                        <p className="font-semibold text-slate-800 text-sm sm:text-base">{course.title}</p>
+                        <p className="text-xs sm:text-sm text-slate-500 mb-1.5">{course.durationYears} Years</p>
+                        <div className="bg-white">
+                          <div className="inline-flex items-center gap-2 mb-1">
+                            <span className="text-[10px] sm:text-xs font-semibold text-slate-700 px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Yearly Fee</span>
+                          </div>
+                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-1">
+                            {course.years.map((fee, idx) => (
+                              <div key={idx} className="flex items-center justify-between text-xs sm:text-sm text-slate-700">
+                                <span className="text-slate-600">Year {idx + 1}</span>
+                                <span className="font-semibold">{formatCurrency(fee)}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-slate-300 group-hover:text-slate-400 mt-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Floating Course Dropdown List for keyboard search */}
       {isOpen && hasCourses && (
         <div className="relative z-10 w-full mt-2 bg-white border border-slate-300 rounded-lg shadow-xl max-h-80 sm:max-h-96 overflow-y-auto">
-          {Object.entries(filteredCourses).map(([school, courses]) => (
+          {(Object.entries(filteredCourses) as Array<[string, Course[]]>).map(([school, courses]) => (
             <div key={school}>
               {/* School Header */}
               <div className="sticky top-0 bg-blue-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 font-bold text-xs sm:text-sm">

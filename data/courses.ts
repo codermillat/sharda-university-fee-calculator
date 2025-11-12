@@ -631,14 +631,6 @@ const BASE_COURSES: Course[] = [
     years: [240000, 247200, 254616, 262254],
     scholarships: [], // Group 4 - No scholarship
   },
-  {
-    id: 'dpharm',
-    title: 'D. Pharm',
-    group: 'Pharmacy',
-    durationYears: 2,
-    years: [120000, 123600],
-    scholarships: [], // Group 4 - No scholarship
-  },
 ];
 
 const createLateralEntryCourse = (config: { baseId: string; title: string; notes?: string }): Course => {

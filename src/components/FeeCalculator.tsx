@@ -64,17 +64,17 @@ const FeeCalculator: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
-      {/* Course Search Section - Centered */}
-      <div className="flex justify-center">
-        <div className="w-full max-w-4xl">
+    <main className="w-full" role="main">
+            {/* Course Search Section - Wider container */}
+            <section aria-label="Course Search and Filter" className="flex justify-center">
+              <div className="w-full max-w-[1400px]">
           <CourseSearch 
             onCourseSelect={handleCourseSelect} 
             selectedCourse={selectedCourse}
             onClear={handleClear}
           />
         </div>
-      </div>
+      </section>
 
       {/* Course Selection Prompt - Centered */}
       {!selectedCourse && (
@@ -94,8 +94,8 @@ const FeeCalculator: React.FC = () => {
 
       {/* Fee Breakdown - Centered */}
       {selectedCourse && (
-        <div className="flex flex-col items-center mt-6 sm:mt-8 md:mt-12 animate-fade-in w-full px-4">
-          <div className="text-center mb-4 sm:mb-6 md:mb-8 w-full">
+              <section aria-label={`Fee structure for ${selectedCourse.title}`} className="flex flex-col items-center mt-6 sm:mt-8 md:mt-12 animate-fade-in w-full px-4">
+                <div id="fee-structure" className="text-center mb-4 sm:mb-6 md:mb-8 w-full scroll-mt-24">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 sm:mb-3 md:mb-4 text-slate-800">
             Fee Structure for: <span className="text-blue-600">{selectedCourse.title}</span>
           </h2>
@@ -118,47 +118,57 @@ const FeeCalculator: React.FC = () => {
                 scholarship={scholarshipPercent}
               />
             ))}
-            </div>
           </div>
+        </div>
 
           {/* Additional SEO Content - Centered */}
-          <div className="flex justify-center mt-8 w-full">
+          <aside aria-label="Additional Information" className="flex justify-center mt-8 w-full">
             <div className="w-full max-w-4xl p-4 bg-slate-50 rounded-lg text-sm text-slate-600">
               <p className="mb-2">
-                <strong>Need more information?</strong> For updated course details, admission process, and scholarship information, 
-                visit the{' '}
+                <strong>Ready to Apply?</strong>{' '}
                 <a 
-                  href="https://bangladesh.shardauniversity.org/" 
+                  href="https://global.sharda.ac.in/bangladesh/?utm_source=studyatsharda_youtube&utm_medium=StudyAtShardaBD&utm_campaign=SU_Admissions_2025&utm_content=organic" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                  onClick={() => handleExternalLinkClick('https://bangladesh.shardauniversity.org/', 'Official Sharda University Bangladesh Portal')}
+                  className="text-green-600 hover:underline font-semibold"
+                  onClick={() => handleExternalLinkClick('https://global.sharda.ac.in/bangladesh/?utm_source=studyatsharda_youtube&utm_medium=StudyAtShardaBD&utm_campaign=SU_Admissions_2025&utm_content=organic', 'Apply Now - Direct Application')}
                 >
-                  official Sharda University Bangladesh portal
+                  Apply directly to Sharda University
                 </a>
-                {' '}or connect with current students via{' '}
+                {' '}or get support via{' '}
                 <a 
                   href="https://wa.me/918800996151" 
                   target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-green-600 hover:underline"
+                  rel="noopener noreferrer nofollow"
+                  className="text-green-600 hover:underline font-semibold"
                   onClick={() => handleSocialLinkClick('WhatsApp', 'https://wa.me/918800996151')}
                 >
-                  WhatsApp
+                  WhatsApp: +918800996151
                 </a>
                 .
               </p>
               <p>
                 Explore career opportunities after B.Tech Computer Science, B.Sc Computer Science future scope, and learn about 
-                high-paying jobs in software development, data science, AI/ML, cyber security, and cloud computing.
+                high-paying jobs in software development, data science, AI/ML, cyber security, and cloud computing. 
+                Read about the{' '}
+                <a 
+                  href="https://bangladesh.shardauniversity.org/booming-it-sector-of-bangladesh-and-career-opportunities-in-it" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                  onClick={() => handleExternalLinkClick('https://bangladesh.shardauniversity.org/booming-it-sector-of-bangladesh-and-career-opportunities-in-it', 'Booming IT Sector of Bangladesh')}
+                >
+                  booming IT sector of Bangladesh and career opportunities
+                </a>
+                {' '}for Bangladeshi students returning from India.
               </p>
             </div>
-          </div>
-        </div>
+          </aside>
+        </section>
       )}
 
       {/* SEO-friendly visible content for search engines - Centered at bottom */}
-      <div className="flex justify-center mt-12 mb-6">
+      <section aria-label="About Sharda University Fee Calculator" className="flex justify-center mt-12 mb-6">
         <div className="w-full max-w-5xl px-4">
           <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
             <h2 className="text-xl font-bold text-slate-800 mb-3 text-center">Sharda University Fee Calculator for Bangladeshi Students</h2>
@@ -230,6 +240,17 @@ const FeeCalculator: React.FC = () => {
                 <p className="mb-2">
                   Discover computer science scope in future industries, career options after B.Tech Computer Science, and best career options for computer science students.
                   Learn what to do after B.Tech in Computer Science, the top jobs after B.Tech Computer Science, and how to secure high-paying roles in AI, data science, and cyber security.
+                  Explore{' '}
+                  <a 
+                    href="https://bangladesh.shardauniversity.org/career-opportunities-for-bangladeshi-students-in-india" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline font-semibold"
+                    onClick={() => handleExternalLinkClick('https://bangladesh.shardauniversity.org/career-opportunities-for-bangladeshi-students-in-india', 'Career Opportunities for Bangladeshi Students')}
+                  >
+                    career opportunities for Bangladeshi students in India
+                  </a>
+                  {' '}and how a degree from Sharda University can enhance your job prospects.
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-slate-600">
                   <li>Career opportunities after B.Tech Computer Science</li>
@@ -257,15 +278,59 @@ const FeeCalculator: React.FC = () => {
               <p>
                 Stay updated on Sharda University admission process 2025, Sharda University MBBS admission guidelines, and Sharda University BSc Nursing placement records.
                 Explore cost of living in Noida for students, Sharda University Greater Noida hostel options, and how to study abroad after diploma with scholarships.
+                Learn{' '}
+                <a 
+                  href="https://bangladesh.shardauniversity.org/how-can-i-get-admission-in-indian-university-colleges" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                  onClick={() => handleExternalLinkClick('https://bangladesh.shardauniversity.org/how-can-i-get-admission-in-indian-university-colleges', 'How to Get Admission in Indian University')}
+                >
+                  how to get admission in Indian universities and colleges
+                </a>
+                {' '}as a Bangladeshi student, including step-by-step procedures, visa requirements, and scholarship opportunities.
               </p>
               <p>
-                This portal aggregates authentic details for study in India from Bangladesh, Indian visa application guidance, and Sharda University review by students to help you plan confidently.
+                <strong>Ready to start your journey?</strong>{' '}
+                <a 
+                  href="https://global.sharda.ac.in/bangladesh/?utm_source=studyatsharda_youtube&utm_medium=StudyAtShardaBD&utm_campaign=SU_Admissions_2025&utm_content=organic" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-green-600 hover:underline font-semibold"
+                  onClick={() => handleExternalLinkClick('https://global.sharda.ac.in/bangladesh/?utm_source=studyatsharda_youtube&utm_medium=StudyAtShardaBD&utm_campaign=SU_Admissions_2025&utm_content=organic', 'Apply Now - Direct Application')}
+                >
+                  Apply directly to Sharda University
+                </a>
+                {' '}or get instant support via{' '}
+                <a 
+                  href="https://wa.me/918800996151" 
+                  target="_blank" 
+                  rel="noopener noreferrer nofollow"
+                  className="text-green-600 hover:underline font-semibold"
+                  onClick={() => handleSocialLinkClick('WhatsApp', 'https://wa.me/918800996151')}
+                >
+                  WhatsApp: +918800996151
+                </a>
+                .
+              </p>
+              <p>
+                Follow a{' '}
+                <a 
+                  href="https://bangladesh.shardauniversity.org/step-by-step-plan-to-study-in-india-for-bangladeshi-students" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                  onClick={() => handleExternalLinkClick('https://bangladesh.shardauniversity.org/step-by-step-plan-to-study-in-india-for-bangladeshi-students', 'Step-by-Step Plan to Study in India')}
+                >
+                  step-by-step plan to study in India for Bangladeshi students
+                </a>
+                {' '}covering application procedures, visa processing, accommodation, and settling into campus life at Sharda University.
               </p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 
