@@ -81,28 +81,30 @@ const FeeCalculator: React.FC = () => {
 
       {/* Course Selection Prompt - Centered */}
       {!selectedCourse && (
-        <div className="flex justify-center mt-8 sm:mt-12 md:mt-16">
-          <div className="text-center text-slate-500 px-4 max-w-2xl">
-            <p className="text-2xl mb-2">🎓</p>
-            <p className="text-sm sm:text-base md:text-lg mb-4">
-              Please select a course to see the detailed fee breakdown.
-            </p>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Calculate fees for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses at Sharda University. 
-              Get instant fee breakdown with scholarship options for study in India from Bangladesh.
-            </p>
+        <div className="flex justify-center mt-10 sm:mt-14 md:mt-20">
+          <div className="text-center px-4 max-w-2xl">
+            <div className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-200 shadow-sm">
+              <p className="text-5xl mb-4">🎓</p>
+              <p className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-800 mb-3">
+                Please select a course to see the detailed fee breakdown.
+              </p>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Calculate fees for B.Tech CSE, MBBS, B.Sc Nursing, BBA, MBA and other courses at Sharda University. 
+                Get instant fee breakdown with scholarship options for study in India from Bangladesh.
+              </p>
+            </div>
           </div>
         </div>
       )}
 
       {/* Fee Breakdown - Centered */}
       {selectedCourse && (
-              <section aria-label={`Fee structure for ${selectedCourse.title}`} className="flex flex-col items-center mt-6 sm:mt-8 md:mt-12 animate-fade-in w-full px-4">
-                <div id="fee-structure" className="text-center mb-4 sm:mb-6 md:mb-8 w-full scroll-mt-24">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 sm:mb-3 md:mb-4 text-slate-800">
+              <section aria-label={`Fee structure for ${selectedCourse.title}`} className="flex flex-col items-center mt-8 sm:mt-10 md:mt-12 animate-fade-in w-full px-4">
+                <div id="fee-structure" className="text-center mb-6 sm:mb-8 md:mb-10 w-full scroll-mt-24">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 sm:mb-4 md:mb-5 text-slate-800">
             Fee Structure for: <span className="text-blue-600">{selectedCourse.title}</span>
           </h2>
-            <p className="text-xs sm:text-sm md:text-base text-slate-500">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 font-medium">
               Duration: {selectedCourse.durationYears} Years · School: {schoolNames[selectedCourse.group] || selectedCourse.group}
             </p>
           </div>
@@ -125,8 +127,8 @@ const FeeCalculator: React.FC = () => {
         </div>
 
           {/* Additional SEO Content - Centered */}
-          <aside aria-label="Additional Information" className="flex justify-center mt-8 w-full">
-            <div className="w-full max-w-4xl p-4 bg-slate-50 rounded-lg text-sm text-slate-600">
+          <aside aria-label="Additional Information" className="flex justify-center mt-10 w-full">
+            <div className="w-full max-w-4xl p-5 sm:p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl border border-slate-200 shadow-sm text-sm text-slate-700">
               <p className="mb-2">
                 <strong>Ready to Apply?</strong>{' '}
                 <a 
@@ -171,38 +173,38 @@ const FeeCalculator: React.FC = () => {
       )}
 
       {/* SEO-friendly visible content for search engines - Centered at bottom */}
-      <section aria-label="About Sharda University Fee Calculator" className="flex justify-center mt-12 mb-6">
+      <section aria-label="About Sharda University Fee Calculator" className="flex justify-center mt-16 mb-8">
         <div className="w-full max-w-5xl px-4">
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
-            <h2 className="text-xl font-bold text-slate-800 mb-3 text-center">Sharda University Fee Calculator for Bangladeshi Students</h2>
-            <p className="text-sm text-slate-700 mb-3">
+          <div className="p-6 sm:p-8 bg-gradient-to-br from-blue-50 to-slate-50 rounded-2xl border border-blue-200 shadow-sm">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-4 text-center">Sharda University Fee Calculator for Bangladeshi Students</h2>
+            <p className="text-sm sm:text-base text-slate-700 mb-4 leading-relaxed">
               Calculate Sharda University fees for B.Tech Computer Science Engineering (CSE), B.Tech Lateral Entry, MBBS, B.Sc Nursing, BBA, MBA, and other courses. 
               Get detailed year-wise fee breakdown with scholarship calculator. Check admission process, course fees, and scholarship eligibility 
               for study in India from Bangladesh. Explore career options after B.Tech CSE, B.Sc Computer Science future scope, and high paying jobs 
               after computer science engineering. Find best college in Greater Noida for B.Tech, Sharda University admission process 2025, 
               and scholarship information for international students.
             </p>
-            <p className="text-sm text-slate-700 mb-3">
+            <p className="text-sm sm:text-base text-slate-700 mb-4 leading-relaxed">
               Sharda University, located in Greater Noida, Uttar Pradesh, is one of the leading universities in India for international students, 
               especially from Bangladesh. The university offers a wide range of undergraduate and postgraduate programs including B.Tech in Computer 
               Science Engineering, MBBS, B.Sc Nursing, BBA, MBA, Pharmacy, and many more. This fee calculator helps you estimate the total cost of education 
               including tuition fees, admission fees, and other mandatory charges. You can also calculate potential scholarships based on your GPA 
               and see how much you can save on your education costs.
             </p>
-            <p className="text-sm text-slate-700 mb-3">
+            <p className="text-sm sm:text-base text-slate-700 mb-4 leading-relaxed">
               Understanding the fee structure is crucial for planning your education abroad. Our calculator provides detailed breakdowns for each 
               year of your program, showing tuition fees, scholarship discounts, admission fees, and other charges. This helps you make informed 
               decisions about your education investment and plan your finances accordingly. Whether you're interested in computer science, medicine, 
               business, or nursing, this tool helps you compare costs and scholarship options for different programs.
             </p>
-            <p className="text-sm text-slate-700 mb-3">
+            <p className="text-sm sm:text-base text-slate-700 mb-6 leading-relaxed">
               Use this planner to review Sharda University B.Tech CSE fees, B.Tech Lateral Entry fees, Sharda University BSc Nursing direct admission costs, and MBBS fee structures. 
               It supports Bangladeshi students researching living costs, Sharda University Greater Noida hostel fees, and study in India from Bangladesh with scholarship opportunities.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-3">
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-2">Key Features:</h3>
-                <ul className="list-disc list-inside text-slate-600 space-y-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm sm:text-base mb-6">
+              <div className="bg-white rounded-lg p-4 border border-slate-200">
+                <h3 className="font-semibold text-slate-800 mb-3 text-lg">Key Features:</h3>
+                <ul className="list-disc list-inside text-slate-700 space-y-2 leading-relaxed">
                   <li>B.Tech CSE Fee Calculator with Scholarship Options</li>
                   <li>B.Tech Lateral Entry Fee Planner (Direct Second Year)</li>
                   <li>MBBS Fee Structure for Bangladeshi Students</li>
@@ -212,9 +214,9 @@ const FeeCalculator: React.FC = () => {
                   <li>Grand Total Calculation</li>
                 </ul>
               </div>
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-2">Additional Services:</h3>
-                <ul className="list-disc list-inside text-slate-600 space-y-1">
+              <div className="bg-white rounded-lg p-4 border border-slate-200">
+                <h3 className="font-semibold text-slate-800 mb-3 text-lg">Additional Services:</h3>
+                <ul className="list-disc list-inside text-slate-700 space-y-2 leading-relaxed">
                   <li>Scholarship Calculator based on GPA</li>
                   <li>Career Guidance for Computer Science Students</li>
                   <li>Study in India from Bangladesh with Scholarship Roadmap</li>
@@ -224,23 +226,33 @@ const FeeCalculator: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="mt-4 pt-4 border-t border-blue-200">
-              <h3 className="font-semibold text-slate-800 mb-2">About Sharda University</h3>
-              <p className="text-sm text-slate-700 mb-2">
+            <div className="mt-6 pt-6 border-t-2 border-blue-200">
+              <h3 className="font-semibold text-slate-800 mb-3 text-lg">About Sharda University</h3>
+              <p className="text-sm sm:text-base text-slate-700 mb-3 leading-relaxed">
                 Sharda University is a leading educational institution in Greater Noida, offering world-class education to students from over 95 countries. 
                 The university is known for its excellent infrastructure, experienced faculty, and strong industry connections. For Bangladeshi students, 
                 Sharda University offers various scholarship programs based on academic performance, making quality education more accessible.
               </p>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm sm:text-base text-slate-700 mb-4 leading-relaxed">
                 The university offers programs in engineering, medicine, business, law, humanities, and many other fields. With state-of-the-art facilities, 
                 modern laboratories, and a vibrant campus life, Sharda University provides an excellent environment for international students to pursue 
                 their higher education goals in India.
               </p>
             </div>
-            <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm text-slate-700">
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-2">Computer Science Scope & Careers</h3>
-                <p className="mb-2">
+            <div className="mt-6 pt-6 border-t-2 border-blue-200">
+              <h3 className="font-semibold text-slate-800 mb-4 text-lg">Scholarship Eligibility for Bangladeshi Students</h3>
+              <div className="bg-blue-50 rounded-lg p-4 sm:p-5 border-l-4 border-blue-500">
+                <ul className="space-y-2.5 text-sm sm:text-base text-slate-700 list-disc list-inside leading-relaxed">
+                  <li>Eligibility restricted to students who have completed their previous qualification from any recognized Education Board from Bangladesh.</li>
+                  <li>Aggregate percentage will be the basis for availing the Scholarship instead of subject wise performance.</li>
+                  <li>Each Student is eligible to avail of only one scholarship (whichever is higher) per academic year.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm sm:text-base text-slate-700">
+              <div className="bg-white rounded-lg p-5 border border-slate-200">
+                <h3 className="font-semibold text-slate-800 mb-3 text-lg">Computer Science Scope & Careers</h3>
+                <p className="mb-3 leading-relaxed">
                   Discover computer science scope in future industries, career options after B.Tech Computer Science, and best career options for computer science students.
                   Learn what to do after B.Tech in Computer Science, the top jobs after B.Tech Computer Science, and how to secure high-paying roles in AI, data science, and cyber security.
                   Explore{' '}
@@ -255,20 +267,20 @@ const FeeCalculator: React.FC = () => {
                   </a>
                   {' '}and how a degree from Sharda University can enhance your job prospects.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-slate-600">
+                <ul className="list-disc list-inside space-y-2 text-slate-700 leading-relaxed">
                   <li>Career opportunities after B.Tech Computer Science</li>
                   <li>Best career options after B.Tech CSE for Bangladeshi students</li>
                   <li>Steps to get high paying jobs after B.Tech</li>
                   <li>Guidance on internships, placements, and global tech roles</li>
                 </ul>
               </div>
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-2">Popular Course Searches</h3>
-                <p className="mb-2">
+              <div className="bg-white rounded-lg p-5 border border-slate-200">
+                <h3 className="font-semibold text-slate-800 mb-3 text-lg">Popular Course Searches</h3>
+                <p className="mb-3 leading-relaxed">
                   Find detailed guides covering bsc computer science course details, b tech computer science course details, and bsc computer science future scope.
                   Compare bsc computer science subjects list, bsc computer science course details 2025, and bsc computer science 1st year classes to plan your academic journey.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-slate-600">
+                <ul className="list-disc list-inside space-y-2 text-slate-700 leading-relaxed">
                   <li>Sharda University B.Tech CSE fees & course outline</li>
                   <li>B.Sc Computer Science subjects list and syllabus roadmap</li>
                   <li>M.Sc Computer Science course details for specialization</li>

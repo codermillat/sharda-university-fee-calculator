@@ -3,6 +3,7 @@ import { Course } from '../../types';
 import { generateCopyText, formatCurrency } from '../utils/calcFees';
 import { MANDATORY_FEES } from '../../data/fees';
 import { trackCopyButton } from '../utils/analytics';
+import { getScholarshipEligibility } from '../utils/scholarshipEligibility';
 
 interface ScholarshipPanelProps {
   course: Course;
@@ -106,6 +107,25 @@ const ScholarshipPanel: React.FC<ScholarshipPanelProps> = ({ course, scholarship
               <span className="font-semibold text-xs sm:text-sm">-{formatCurrency(grandTotalWithoutScholarship - grandTotalWithScholarship)}</span>
             </div>
           )}
+        </div>
+
+        {/* Eligibility Criteria Section */}
+        <div className="mt-2 pt-2 border-t border-slate-200 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
+          {(() => {
+            const eligibilityInfo = getScholarshipEligibility(scholarship, course);
+            return (
+              <div className="space-y-1">
+                <p className="text-xs text-slate-600">
+                  <span className="font-medium">Eligibility:</span> {eligibilityInfo.eligibility}
+                </p>
+                {eligibilityInfo.note && (
+                  <p className="text-xs text-slate-500 italic">
+                    {eligibilityInfo.note}
+                  </p>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </div>
 
